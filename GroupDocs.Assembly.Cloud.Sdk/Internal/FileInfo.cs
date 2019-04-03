@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="FileInfo.cs">
+// <copyright company="GroupDocs" file="FileInfo.cs">
 //   Copyright (c) 2018 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>

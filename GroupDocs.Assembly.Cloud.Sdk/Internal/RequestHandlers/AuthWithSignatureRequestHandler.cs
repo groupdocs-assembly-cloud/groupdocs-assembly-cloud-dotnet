@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="AuthWithSignatureRequestHandler.cs">
+// <copyright company="GroupDocs" file="AuthWithSignatureRequestHandler.cs">
 //   Copyright (c) 2018 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>

@@ -8,7 +8,7 @@ The complete source code is available in this repository folder. You can either 
 
 ### Prerequisites
 
-To use GroupDocs.Assembly for Cloud .NET SDK you need to register an account with [GroupDocs Cloud](https://www.groupdocs.cloud/) and lookup/create App Key and SID at [Cloud Dashboard](https://dashboard.groupdocs.cloud/#/apps). There is free quota available. For more details, see [Aspose Cloud Pricing](https://purchase.groupdocs.cloud/pricing).
+To use GroupDocs.Assembly for Cloud .NET SDK you need to register an account with [GroupDocs Cloud](https://www.groupdocs.cloud/) and lookup/create App Key and SID at [Cloud Dashboard](https://dashboard.groupdocs.cloud/#/apps). There is free quota available. For more details, see [GroupDocs Cloud Pricing](https://purchase.groupdocs.cloud/pricing).
 
 ### Installation
 
@@ -31,15 +31,25 @@ From within Visual Studio:
 5. Click on the GroupDocs.Assembly-Cloud package, select the appropriate version in the right-tab and click *Install*.
 
 ### Sample usage
+#### Test running
+Before run tests please fill file [servercreds.json](Settings/servercreds.json) with this json
+```json
+{
+    "AppSid": "your app sid here",
+    "AppKey": "your app key here",
+    "BaseUrl": "https://api.groupdocs.cloud"
+}
+```
 
 The examples below show how your application have to assemble document using GroupDocs.Assembly-Cloud library:
 ```csharp
 var assemblyApi = new AssemblyApi(AppKey, AppSid);
 var dataName = "FileWithData.json";
 var data = new MemoryStream(File.ReadAllBytes(Path.Combine(LocalTestDataFolder, dataName)));
+var saveOptions = new LoadSaveOptionsData("pdf");
 var request = new PostAssembleDocumentRequest(
                 fileName,
-                Path.Combine("Path/To/Document/On/Storage"), null, data);            
+                Path.Combine("Path/To/Document/On/Storage"), null, data, saveOptions);            
 var documentStream = this.AssemblyApi.PostAssembleDocument(request);
 ```
 

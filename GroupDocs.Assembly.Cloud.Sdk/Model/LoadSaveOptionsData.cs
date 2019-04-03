@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="GroupDocs" file="HttpUtility.cs">
+// <copyright company="GroupDocs" file="LoadSaveOptionsData.cs">
 //   Copyright (c) 2018 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -22,19 +22,25 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
-namespace GroupDocs.Assembly.Cloud.Sdk.Internal
-{    
-    internal class HttpUtility
-    {        
-        public static string UrlEncode(string stringToEncode)
+namespace GroupDocs.Assembly.Cloud.Sdk.Model
+{
+    /// <summary>
+    /// Save options data
+    /// </summary>
+    public class LoadSaveOptionsData
+    {
+        /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="saveFormat">save format</param>
+        public LoadSaveOptionsData(string saveFormat)
         {
-#if NET20
-            return System.Web.HttpUtility.UrlEncode(stringToEncode);
-#endif
-#if NETSTANDARD1_6
-            return System.Net.WebUtility.UrlEncode(stringToEncode);
-#endif
+            this.SaveFormat = saveFormat;
         }
+        
+        /// <summary>
+        /// Save format like pdf, docx, doc, etc
+        /// </summary>
+        public string SaveFormat { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="UrlHelper.cs">
+// <copyright company="GroupDocs" file="UrlHelper.cs">
 //   Copyright (c) 2018 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>

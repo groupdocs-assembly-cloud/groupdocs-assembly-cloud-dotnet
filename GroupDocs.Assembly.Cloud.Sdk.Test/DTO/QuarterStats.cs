@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="GroupDocs" file="AssemblyApiTests.cs">
+// <copyright company="GroupDocs" file="QuarterStats.cs">
 //   Copyright (c) 2018 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -22,40 +22,56 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-namespace GroupDocs.Assembly.Cloud.Sdk.Test.Api
+namespace GroupDocs.Assembly.Cloud.Sdk.Test.DTO
 {
-    using System.IO;
-
-    using GroupDocs.Assembly.Cloud.Sdk.Model;
-    using GroupDocs.Assembly.Cloud.Sdk.Model.Requests;
-    using GroupDocs.Assembly.Cloud.Sdk.Test.Base;
-
-    using NUnit.Framework;
-
     /// <summary>
-    /// Class for testing Assembly for Cloud
+    ///     One of classes used to test custom object access while assembling a document.
     /// </summary>
-    [TestFixture]
-    public class AssemblyApiTests : BaseTestContext
+    /// <dev>
+    ///     Names of members of this class must satisfy Java naming conventions for autoportability of tests.
+    /// </dev>
+    public class QuarterStats
     {
         /// <summary>
-        /// Assemble document test
+        ///     Initializes a new instance of the <see cref="QuarterStats" /> class.
         /// </summary>
-        [Test]
-        public void TestPostAssembleDocument()
+        public QuarterStats()
         {
-            var fileName = "TestAllChartTypes.docx";
-            var dataName = "Teams.json";
-            var data = new MemoryStream(File.ReadAllBytes(Path.Combine(LocalTestDataFolder, dataName)));
-            var saveOptions = new LoadSaveOptionsData("pdf");
-            this.UploadFileToStorage(Path.Combine(RemoteBaseTestDataFolder, "GroupDocs.Assembly", fileName), null, null, File.ReadAllBytes(Path.Combine(LocalTestDataFolder, fileName)));
-
-            var request = new PostAssembleDocumentRequest(
-                fileName,
-                Path.Combine(RemoteBaseTestDataFolder, "GroupDocs.Assembly"), null, data, saveOptions);
-            var result = this.AssemblyApi.PostAssembleDocument(request);
-
-            Assert.IsTrue(result.Length > 0, "Error occurred while assemble document");
         }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QuarterStats"/> class.
+        /// </summary>
+        /// <param name="quarter">
+        /// The quarter.
+        /// </param>
+        /// <param name="team1Stats">
+        /// The team 1 stats.
+        /// </param>
+        /// <param name="team2Stats">
+        /// The team 2 stats.
+        /// </param>
+        public QuarterStats(int quarter, TeamStats team1Stats, TeamStats team2Stats)
+        {
+            this.Quarter = quarter;
+            this.Team1Stats = team1Stats;
+            this.Team2Stats = team2Stats;
+        }
+
+        /// <summary>
+        ///     Gets or sets the quarter.
+        /// </summary>
+        public int Quarter { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the team 1 stats.
+        /// </summary>
+        public TeamStats Team1Stats { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the team 2 stats.
+        /// </summary>
+        public TeamStats Team2Stats { get; set; }
     }
+
 }

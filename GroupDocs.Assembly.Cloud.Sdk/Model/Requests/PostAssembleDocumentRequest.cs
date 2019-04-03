@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="PostAssembleDocumentRequest.cs">
+// <copyright company="GroupDocs" file="PostAssembleDocumentRequest.cs">
 //   Copyright (c) 2018 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -43,12 +43,14 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
         /// <param name="folder">Template folder name on a storage.</param>
         /// <param name="destFileName">Report file name</param>
         /// <param name="data">Report data</param>
-        public PostAssembleDocumentRequest(string name, string folder = null, string destFileName = null, System.IO.Stream data = null)             
+        /// <param name="saveOptions">saveOptions</param>
+        public PostAssembleDocumentRequest(string name, string folder = null, string destFileName = null, System.IO.Stream data = null, LoadSaveOptionsData saveOptions = null)             
         {
             this.Name = name;
             this.Folder = folder;
             this.DestFileName = destFileName;
             this.Data = data;
+            this.SaveOptions = saveOptions;
         }
 
         /// <summary>
@@ -70,5 +72,10 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
         /// Report data
         /// </summary>  
         public System.IO.Stream Data { get; set; }
+
+        /// <summary>
+        /// Save options
+        /// </summary>
+        public LoadSaveOptionsData SaveOptions { get; set; }
   }
 }

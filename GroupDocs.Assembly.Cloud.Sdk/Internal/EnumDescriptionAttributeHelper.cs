@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="EnumDescriptionAttributeHelper.cs">
+// <copyright company="GroupDocs" file="EnumDescriptionAttributeHelper.cs">
 //   Copyright (c) 2018 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>

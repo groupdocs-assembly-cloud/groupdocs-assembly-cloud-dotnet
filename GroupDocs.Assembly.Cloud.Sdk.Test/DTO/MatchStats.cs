@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="GroupDocs" file="HttpUtility.cs">
+// <copyright company="GroupDocs" file="MatchStats.cs">
 //   Copyright (c) 2018 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -22,19 +22,48 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
+namespace GroupDocs.Assembly.Cloud.Sdk.Test.DTO
+{
+    using System.Collections.Generic;
 
-namespace GroupDocs.Assembly.Cloud.Sdk.Internal
-{    
-    internal class HttpUtility
-    {        
-        public static string UrlEncode(string stringToEncode)
+    /// <summary>
+    ///     One of classes used to test custom object access while assembling a document.
+    /// </summary>
+    public class MatchStats
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MatchStats"/> class.
+        /// </summary>
+        /// <param name="team1Name">
+        /// The team 1 name.
+        /// </param>
+        /// <param name="team2Name">
+        /// The team 2 name.
+        /// </param>
+        /// <param name="quarterStats">
+        /// The quarter stats.
+        /// </param>
+        public MatchStats(string team1Name, string team2Name, IEnumerable<QuarterStats> quarterStats)
         {
-#if NET20
-            return System.Web.HttpUtility.UrlEncode(stringToEncode);
-#endif
-#if NETSTANDARD1_6
-            return System.Net.WebUtility.UrlEncode(stringToEncode);
-#endif
+            this.Team1Name = team1Name;
+            this.Team2Name = team2Name;
+            this.QuarterStats = quarterStats;
         }
+
+        /// <summary>
+        ///     Gets or sets the quarter stats.
+        /// </summary>
+        public IEnumerable<QuarterStats> QuarterStats { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the team 1 name.
+        /// </summary>
+        public string Team1Name { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the team 2 name.
+        /// </summary>
+        public string Team2Name { get; set; }
     }
+
 }

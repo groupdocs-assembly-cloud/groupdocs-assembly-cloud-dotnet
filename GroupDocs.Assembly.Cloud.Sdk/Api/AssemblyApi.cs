@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="AssemblyApi.cs">
+// <copyright company="GroupDocs" file="AssemblyApi.cs">
 //   Copyright (c) 2018 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -83,6 +83,11 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Api
                 throw new ApiException(400, "Missing required parameter 'name' when calling PostAssembleDocument");
             }
 
+            if (request.SaveOptions == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'SaveOptions' when calling PostAssembleDocument");
+            }
+
             // create path and map variables
             var resourcePath = this.configuration.GetApiRootUrl() + "/assembly/{name}/build";
             resourcePath = Regex
@@ -93,7 +98,8 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Api
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "destFileName", request.DestFileName);
-            
+
+            formParams.Add("saveOptions", request.SaveOptions);
             if (request.Data != null) 
             {
                 formParams.Add("data", this.apiInvoker.ToFileInfo(request.Data, "Data"));
