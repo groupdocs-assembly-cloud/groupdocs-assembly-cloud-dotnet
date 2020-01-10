@@ -23,10 +23,9 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GroupDocs.Assembly.Cloud.Sdk.Api
+namespace GroupDocs.Assembly.Cloud.Sdk
 {
     using System;
-    using GroupDocs.Assembly.Cloud.Sdk.Internal;
 
     /// <summary>
     /// Represents a set of configuration settings.
@@ -35,40 +34,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Api
     {
         private string apiBaseUrl = "https://api.aspose.cloud";       
         private bool debugMode = false;
-
-        private AvailiableApiVersions version = AvailiableApiVersions.V1;
-
-        /// <summary>
-        /// The availiable api versions.
-        /// </summary>
-        public enum AvailiableApiVersions
-        {
-            /// <summary>
-            /// Current API version
-            /// </summary>
-            [EnumDescription("v1")]
-            V1 = 0,
-
-            /// <summary>
-            /// Don't use it, added for backward campability
-            /// </summary>
-            [Obsolete]
-            [EnumDescription("v1.1")]
-            V11 = 99,
-
-            /// <summary>
-            /// Stable version
-            /// </summary>
-            [EnumDescription("v2")]
-            V2 = 1,
-
-            /// <summary>
-            /// Frozen version
-            /// </summary>
-            [EnumDescription("v3")]
-            V3 = 2
-        }
-
+        
         /// <summary>
         /// Aspose Cloud API base URL.
         /// </summary>
@@ -81,26 +47,19 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Api
 
             set
             {
-                this.apiBaseUrl = value;
+                var urlValue = value ?? this.apiBaseUrl;
+
+                Uri result;
+                if (!Uri.TryCreate(urlValue, UriKind.Absolute, out result) || 
+                    !(result.Scheme == Uri.UriSchemeHttp || result.Scheme == Uri.UriSchemeHttps))
+                {
+                    throw new ArgumentException("ApiBaseUrl is not valid HTTP / HTTPS URL");
+                }
+
+                this.apiBaseUrl = urlValue;
             }
         }
-
-        /// <summary>
-        /// Gets or sets the API version.
-        /// </summary>
-        public AvailiableApiVersions Version
-        {
-            get
-            {
-                return this.version;
-            }
-
-            set
-            {
-                this.version = value;
-            }
-        }
-
+      
         /// <summary>
         /// Gets or sets the app key.
         /// </summary>
@@ -128,14 +87,14 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Api
         }
 
         /// <summary>
-        /// Authentification type.
+        /// Authentication type.
         /// Default is OAuth 2.0
         /// </summary>
         public AuthType AuthType { get; set; }
 
         internal string GetApiRootUrl()
         {
-            var result = this.ApiBaseUrl + "/" + EnumDescriptionAttributeHelper.GetDescription(this.version);
+            var result = this.ApiBaseUrl + "/v4.0";
 
             return result.EndsWith("/") ? result.Substring(0, result.Length - 1) : result;
         }       

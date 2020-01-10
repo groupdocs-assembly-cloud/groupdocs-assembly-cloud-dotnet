@@ -46,13 +46,12 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Test.Api
         {
             var fileName = "TestAllChartTypes.docx";
             var dataName = "Teams.json";
-            var data = new MemoryStream(File.ReadAllBytes(Path.Combine(LocalTestDataFolder, dataName)));
-            var saveOptions = new LoadSaveOptionsData("pdf");
-            this.UploadFileToStorage(Path.Combine(RemoteBaseTestDataFolder, "GroupDocs.Assembly", fileName), null, null, File.ReadAllBytes(Path.Combine(LocalTestDataFolder, fileName)));
+            var data = new MemoryStream(File.ReadAllBytes(Path.Combine(BaseTestContext.LocalTestDataFolder, dataName)));
+            var saveOptions = new LoadSaveOptionsData() { SaveFormat = "pdf" };
+            this.UploadFileToStorage(Path.Combine(BaseTestContext.RemoteBaseTestDataFolder, "GroupDocs.Assembly", fileName), null, null, File.ReadAllBytes(Path.Combine(BaseTestContext.LocalTestDataFolder, fileName)));
 
             var request = new PostAssembleDocumentRequest(
-                fileName,
-                Path.Combine(RemoteBaseTestDataFolder, "GroupDocs.Assembly"), null, data, saveOptions);
+                fileName, data, saveOptions, Path.Combine(BaseTestContext.RemoteBaseTestDataFolder, "GroupDocs.Assembly"), null);
             var result = this.AssemblyApi.PostAssembleDocument(request);
 
             Assert.IsTrue(result.Length > 0, "Error occurred while assemble document");

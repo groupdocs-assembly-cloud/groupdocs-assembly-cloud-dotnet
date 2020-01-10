@@ -1,6 +1,6 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="GroupDocs" file="NeedRepeatRequestException.cs">
-//   Copyright (c) 2018 GroupDocs.Assembly for Cloud
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright company="Aspose" file="FileResponse.cs">
+//   Copyright (c) 2019 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,11 +23,31 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GroupDocs.Assembly.Cloud.Sdk
+namespace GroupDocs.Assembly.Cloud.Sdk.Model 
 {
-    using System;
+  using System;  
+  using System.Collections;
+  using System.Collections.Generic;
+  using System.Runtime.Serialization;
+  using System.Text;
+  using Newtonsoft.Json;
+  using Newtonsoft.Json.Converters;
 
-    internal class NeedRepeatRequestException : Exception
-    {
+  /// <summary>
+  /// The empty type used as a flag.             
+  /// </summary>  
+  public class FileResponse 
+  {                       
+        /// <summary>
+        /// Get the string presentation of the object
+        /// </summary>
+        /// <returns>String presentation of the object</returns>
+        public override string ToString()  
+        {
+          var sb = new StringBuilder();
+          sb.Append("class FileResponse {\n");
+          sb.Append("}\n");
+          return sb.ToString();
+        }
     }
 }

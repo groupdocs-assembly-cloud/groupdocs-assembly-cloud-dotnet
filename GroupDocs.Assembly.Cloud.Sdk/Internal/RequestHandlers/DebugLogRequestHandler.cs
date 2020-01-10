@@ -23,13 +23,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GroupDocs.Assembly.Cloud.Sdk.Internal.RequestHandlers
+namespace GroupDocs.Assembly.Cloud.Sdk.RequestHandlers
 {
     using System.Diagnostics;
     using System.IO;
     using System.Net;
     using System.Text;
-    using GroupDocs.Assembly.Cloud.Sdk.Api;
 
     internal class DebugLogRequestHandler : IRequestHandler
     {

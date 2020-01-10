@@ -23,7 +23,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GroupDocs.Assembly.Cloud.Sdk.Internal
+namespace GroupDocs.Assembly.Cloud.Sdk
 {    
     internal class HttpUtility
     {        
@@ -32,7 +32,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Internal
 #if NET20
             return System.Web.HttpUtility.UrlEncode(stringToEncode);
 #endif
-#if NETSTANDARD1_6
+#if NETSTANDARD2_0
             return System.Net.WebUtility.UrlEncode(stringToEncode);
 #endif
         }
