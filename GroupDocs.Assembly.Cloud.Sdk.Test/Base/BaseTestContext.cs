@@ -26,10 +26,9 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Test.Base
 {
     using System.IO;
 
-    using GroupDocs.Assembly.Cloud.Sdk.Api;
+    using GroupDocs.Assembly.Cloud.Sdk;
     using GroupDocs.Storage.Cloud.Sdk.Api;
     using GroupDocs.Storage.Cloud.Sdk.Model.Requests;
-
     using Newtonsoft.Json;
 
     /// <summary>
