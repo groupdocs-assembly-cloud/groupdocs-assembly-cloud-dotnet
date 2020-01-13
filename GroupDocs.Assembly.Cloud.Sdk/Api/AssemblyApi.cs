@@ -28,9 +28,10 @@ namespace GroupDocs.Assembly.Cloud.Sdk
     using System;
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
-    using GroupDocs.Assembly.Cloud.Sdk;
     using GroupDocs.Assembly.Cloud.Sdk.Model.Requests;
-    using GroupDocs.Assembly.Cloud.Sdk.RequestHandlers;
+    using GroupDocs.Assembly.Cloud.Sdk.Internal;
+    using GroupDocs.Assembly.Cloud.Sdk.Internal.RequestHandlers;
+    using GroupDocs.Assembly.Cloud.Sdk.Api;
     
     /// <summary>
     /// GroupDocs.Assembly for Cloud API.

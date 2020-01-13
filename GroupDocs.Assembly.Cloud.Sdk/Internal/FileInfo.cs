@@ -23,7 +23,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GroupDocs.Assembly.Cloud.Sdk
+namespace GroupDocs.Assembly.Cloud.Sdk.Internal
 {
     internal struct FileInfo
     {

@@ -23,16 +23,18 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GroupDocs.Assembly.Cloud.Sdk
+namespace GroupDocs.Assembly.Cloud.Sdk.Internal
 {
     using System;
-    using System.Collections.Generic;    
+    using System.Collections.Generic;
     using System.IO;
     using System.Net;
-#if NETSTANDARD2_0
+    using System.Text;
+#if NETSTANDARD1_6
     using System.Reflection;
 #endif
-    using System.Text;
+    using GroupDocs.Assembly.Cloud.Sdk.Api;
+    using FileInfo = GroupDocs.Assembly.Cloud.Sdk.Internal.FileInfo;
 
     internal class ApiInvoker
     {        
@@ -46,7 +48,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk
 #if NET20            
             var sdkVersion = this.GetType().Assembly.GetName().Version;
 #endif
-#if NETSTANDARD2_0
+#if NETSTANDARD1_6
             var sdkVersion = this.GetType().GetTypeInfo().Assembly.GetName().Version;
 #endif
             this.AddDefaultHeader(AsposeClientHeaderName, ".net sdk");
@@ -76,10 +78,10 @@ namespace GroupDocs.Assembly.Cloud.Sdk
             return (Stream)this.InvokeInternal(path, method, true, body, headerParams, formParams, contentType);
         }                     
        
-        public FileInfo ToFileInfo(Stream stream, string paramName)
+        public Internal.FileInfo ToFileInfo(Stream stream, string paramName)
         {
             // TODO: add contenttype
-            return new FileInfo { Name = paramName, FileContent = StreamHelper.ReadAsBytes(stream) };
+            return new Internal.FileInfo { Name = paramName, FileContent = StreamHelper.ReadAsBytes(stream) };
         }                 
 
         private static byte[] GetMultipartFormData(Dictionary<string, object> postParameters, string boundary)
@@ -101,9 +103,9 @@ namespace GroupDocs.Assembly.Cloud.Sdk
 
                     needsClrf = true;
 
-                    if (param.Value is FileInfo)
+                    if (param.Value is Internal.FileInfo)
                     {
-                        var fileInfo = (FileInfo)param.Value;
+                        var fileInfo = (Internal.FileInfo)param.Value;
                         string postData =
                             string.Format(
                                 "--{0}\r\nContent-Disposition: form-data; name=\"{1}\"; filename=\"{1}\"\r\nContent-Type: {2}\r\n\r\n",
@@ -145,9 +147,9 @@ namespace GroupDocs.Assembly.Cloud.Sdk
             {
                 foreach (var param in postParameters)
                 {
-                    if (param.Value is FileInfo)
+                    if (param.Value is Internal.FileInfo)
                     {
-                        var fileInfo = (FileInfo)param.Value;
+                        var fileInfo = (Internal.FileInfo)param.Value;
 
                         // Write the file data directly to the Stream, rather than serializing it to a string.
                         formDataStream.Write(fileInfo.FileContent, 0, fileInfo.FileContent.Length);
@@ -235,7 +237,8 @@ namespace GroupDocs.Assembly.Cloud.Sdk
                     formData = GetMultipartFormData(formParams, formDataBoundary);
                 }
                 else
-                {                   
+                {
+                    client.ContentType = "multipart/form-data";
                     formData = GetMultipartFormData(formParams, string.Empty);
                 }                
             }
@@ -293,7 +296,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk
 #if NET20
                     using (Stream requestStream = client.GetRequestStream())
 #endif
-#if NETSTANDARD2_0
+#if NETSTANDARD1_6
                     using (Stream requestStream = client.GetRequestStreamAsync().Result) 
 #endif                    
                     {
@@ -349,7 +352,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk
 #if NET20
                     return request.GetResponse();
 #endif
-#if NETSTANDARD2_0
+#if NETSTANDARD1_6
                 try
                 {
                     return request.GetResponseAsync().Result;

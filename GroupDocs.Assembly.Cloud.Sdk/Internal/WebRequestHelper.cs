@@ -23,7 +23,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GroupDocs.Assembly.Cloud.Sdk
+namespace GroupDocs.Assembly.Cloud.Sdk.Internal
 {
     using System.Net;
 
@@ -34,7 +34,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk
 #if NET20
              request.Headers.Add(key, value);
 #endif
-#if NETSTANDARD2_0
+#if NETSTANDARD1_6
             request.Headers[key] = value;
 #endif
         }

@@ -23,13 +23,16 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GroupDocs.Assembly.Cloud.Sdk.RequestHandlers
+namespace GroupDocs.Assembly.Cloud.Sdk.Internal.RequestHandlers
 {
     using System.Collections.Generic;
     using System.IO;
-    using System.Net;    
-    
+    using System.Net;
+
+    using GroupDocs.Assembly.Cloud.Sdk.Api;
+
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Serialization;
 
     internal class OAuthRequestHandler : IRequestHandler
     {        
@@ -88,11 +91,33 @@ namespace GroupDocs.Assembly.Cloud.Sdk.RequestHandlers
                 throw new NeedRepeatRequestException();
             }
         }
-        
+
+        /// <summary>
+        /// OBSOLETE, will be removed soon. DO NOT USE.
+        /// </summary>
+        private void RefreshToken()
+        {
+            var requestUrl = this.configuration.ApiBaseUrl + "/oauth2/token";
+
+            var postData = "grant_type=refresh_token";
+            postData += "&refresh_token=" + this.refreshToken;            
+
+            var responseString = this.apiInvoker.InvokeApi(
+                requestUrl,
+                "POST",
+                postData,
+                contentType: "application/x-www-form-urlencoded");
+
+            var result =
+                (GetAccessTokenResult)SerializationHelper.Deserialize(responseString, typeof(GetAccessTokenResult));
+
+            this.accessToken = result.AccessToken;
+            this.refreshToken = result.RefreshToken;
+        }
+
         private void RequestToken()
         {
-            var requestUrl = this.configuration.ApiBaseUrl + "/connect/token";
-            //// var requestUrl = "https://api-qa.aspose.cloud/connect/token";           
+            var requestUrl = this.configuration.ApiBaseUrl + "/oauth2/token";
 
             var postData = "grant_type=client_credentials";
             postData += "&client_id=" + this.configuration.AppSid;

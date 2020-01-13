@@ -23,11 +23,14 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GroupDocs.Assembly.Cloud.Sdk.RequestHandlers
+namespace GroupDocs.Assembly.Cloud.Sdk.Internal.RequestHandlers
 {
     using System;
     using System.IO;
-    using System.Net;                        
+    using System.Net;
+
+    using GroupDocs.Assembly.Cloud.Sdk.Api;
+    using GroupDocs.Assembly.Cloud.Sdk.Internal;
 
     internal class ApiExceptionRequestHandler : IRequestHandler
     {
