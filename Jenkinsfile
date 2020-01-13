@@ -28,7 +28,7 @@ node('windows2019') {
 		gitlabCommitStatus("net tests") {
 			stage('net tests') {	
 				try {
-					bat 'docker run -v %CD%:C:\\Build\\ netsdkbuild c:\\build\\scripts\\net-test.bat Tests'
+					bat 'docker run -v %CD%:C:\\Build\\ netsdkbuild c:\\build\\scripts\\net-test.bat Test'
 				} finally {
 					junit '**\\testResults\\Tests-results-net452.xml'
 				}

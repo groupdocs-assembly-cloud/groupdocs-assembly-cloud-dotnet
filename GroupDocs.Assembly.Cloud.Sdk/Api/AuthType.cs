@@ -23,7 +23,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GroupDocs.Assembly.Cloud.Sdk.Api
+namespace GroupDocs.Assembly.Cloud.Sdk
 {
     /// <summary>
     /// Supported types of authentification.

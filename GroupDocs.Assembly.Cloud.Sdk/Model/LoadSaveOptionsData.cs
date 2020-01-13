@@ -1,6 +1,6 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="GroupDocs" file="LoadSaveOptionsData.cs">
-//   Copyright (c) 2018 GroupDocs.Assembly for Cloud
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright company="Aspose" file="LoadSaveOptionsData.cs">
+//   Copyright (c) 2019 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,25 +22,38 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-namespace GroupDocs.Assembly.Cloud.Sdk.Model
+
+namespace GroupDocs.Assembly.Cloud.Sdk.Model 
 {
-    /// <summary>
-    /// Save options data
-    /// </summary>
-    public class LoadSaveOptionsData
-    {
+  using System;  
+  using System.Collections;
+  using System.Collections.Generic;
+  using System.Runtime.Serialization;
+  using System.Text;
+  using Newtonsoft.Json;
+  using Newtonsoft.Json.Converters;
+
+  /// <summary>
+  /// Save options data which is using for specifying additional save options, like save format and etc.
+  /// </summary>  
+  public class LoadSaveOptionsData 
+  {                       
         /// <summary>
-        /// ctor
-        /// </summary>
-        /// <param name="saveFormat">save format</param>
-        public LoadSaveOptionsData(string saveFormat)
-        {
-            this.SaveFormat = saveFormat;
-        }
-        
-        /// <summary>
-        /// Save format like pdf, docx, doc, etc
-        /// </summary>
+        /// Save format for assembled document
+        /// </summary>  
         public string SaveFormat { get; set; }
+
+        /// <summary>
+        /// Get the string presentation of the object
+        /// </summary>
+        /// <returns>String presentation of the object</returns>
+        public override string ToString()  
+        {
+          var sb = new StringBuilder();
+          sb.Append("class LoadSaveOptionsData {\n");
+          sb.Append("  SaveFormat: ").Append(this.SaveFormat).Append("\n");
+          sb.Append("}\n");
+          return sb.ToString();
+        }
     }
 }

@@ -23,15 +23,15 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GroupDocs.Assembly.Cloud.Sdk.Internal
+namespace GroupDocs.Assembly.Cloud.Sdk
 {
     using System;
     using System.IO;
-#if NETSTANDARD1_6
+#if NETSTANDARD2_0
     using System.Reflection;
 #endif
-    using GroupDocs.Assembly.Cloud.Sdk.Api;
-    using GroupDocs.Assembly.Cloud.Sdk.Internal.RequestHandlers;
+
+    using GroupDocs.Assembly.Cloud.Sdk.Model;
 
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -54,11 +54,16 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Internal
             }
         }
 
-        public static object Deserialize(string responseData, Type type)
+        public static object Deserialize(string json, Type type)
         {
             try
             {
-                return JsonConvert.DeserializeObject(responseData, type);
+                if (json.StartsWith("{") || json.StartsWith("["))
+                {
+                    return JsonConvert.DeserializeObject(json, type);
+                }
+
+                throw new ApiException(500, "Server does not return json: '" + json + "'");
             }
             catch (IOException e)
             {
@@ -73,5 +78,45 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Internal
                 throw new ApiException(500, "Error while parse response: " + xmle.Message);
             }
         }
+
+        internal abstract class JsonCreationConverter<T> : JsonConverter
+        {            
+            public override bool CanConvert(Type objectType)
+            {
+#if NET20
+                return typeof(T).IsAssignableFrom(objectType);
+#endif
+#if NETSTANDARD2_0
+                return typeof(T).GetTypeInfo().IsAssignableFrom(objectType);
+#endif
+            }
+
+            public override object ReadJson(
+                JsonReader reader,
+                Type objectType,
+                object existingValue,
+                JsonSerializer serializer)
+            {
+                var jsonObject = JObject.Load(reader);
+                T target = this.Create(objectType, jsonObject);
+                serializer.Populate(jsonObject.CreateReader(), target);
+                return target;
+            }
+
+            public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+            {
+                serializer.Serialize(writer, value);
+            }
+
+            /// <summary>
+            /// Create an instance of objectType, based properties in the JSON object.
+            /// </summary>
+            /// <param name="objectType">type of object expected.</param>
+            /// <param name="jsonObject">
+            /// Contents of JSON object that will be deserialized.
+            /// </param>
+            /// <returns>An instance of objectType.</returns>
+            protected abstract T Create(Type objectType, JObject jsonObject);
+        }       
     }
 }

@@ -23,18 +23,15 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GroupDocs.Assembly.Cloud.Sdk.Internal.RequestHandlers
+namespace GroupDocs.Assembly.Cloud.Sdk.RequestHandlers
 {
     using System;
     using System.IO;
-    using System.Net;
+    using System.Net;    
     using System.Security.Cryptography;
     using System.Text;
     using System.Text.RegularExpressions;
-
-    using GroupDocs.Assembly.Cloud.Sdk.Api;
-    using GroupDocs.Assembly.Cloud.Sdk.Internal;
-
+    
     internal class AuthWithSignatureRequestHandler : IRequestHandler
     {
         private readonly Configuration configuration;

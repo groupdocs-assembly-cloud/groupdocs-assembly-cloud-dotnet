@@ -23,7 +23,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GroupDocs.Assembly.Cloud.Sdk.Internal
+namespace GroupDocs.Assembly.Cloud.Sdk
 {
     using System.IO;
     using System.Text;

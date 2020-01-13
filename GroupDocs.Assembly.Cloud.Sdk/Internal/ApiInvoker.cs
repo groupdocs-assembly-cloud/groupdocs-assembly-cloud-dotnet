@@ -23,18 +23,16 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GroupDocs.Assembly.Cloud.Sdk.Internal
+namespace GroupDocs.Assembly.Cloud.Sdk
 {
     using System;
-    using System.Collections.Generic;
+    using System.Collections.Generic;    
     using System.IO;
     using System.Net;
-    using System.Text;
-#if NETSTANDARD1_6
+#if NETSTANDARD2_0
     using System.Reflection;
 #endif
-    using GroupDocs.Assembly.Cloud.Sdk.Api;
-    using FileInfo = GroupDocs.Assembly.Cloud.Sdk.Internal.FileInfo;
+    using System.Text;
 
     internal class ApiInvoker
     {        
@@ -48,7 +46,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Internal
 #if NET20            
             var sdkVersion = this.GetType().Assembly.GetName().Version;
 #endif
-#if NETSTANDARD1_6
+#if NETSTANDARD2_0
             var sdkVersion = this.GetType().GetTypeInfo().Assembly.GetName().Version;
 #endif
             this.AddDefaultHeader(AsposeClientHeaderName, ".net sdk");
@@ -78,10 +76,10 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Internal
             return (Stream)this.InvokeInternal(path, method, true, body, headerParams, formParams, contentType);
         }                     
        
-        public Internal.FileInfo ToFileInfo(Stream stream, string paramName)
+        public FileInfo ToFileInfo(Stream stream, string paramName)
         {
             // TODO: add contenttype
-            return new Internal.FileInfo { Name = paramName, FileContent = StreamHelper.ReadAsBytes(stream) };
+            return new FileInfo { Name = paramName, FileContent = StreamHelper.ReadAsBytes(stream) };
         }                 
 
         private static byte[] GetMultipartFormData(Dictionary<string, object> postParameters, string boundary)
@@ -103,9 +101,9 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Internal
 
                     needsClrf = true;
 
-                    if (param.Value is Internal.FileInfo)
+                    if (param.Value is FileInfo)
                     {
-                        var fileInfo = (Internal.FileInfo)param.Value;
+                        var fileInfo = (FileInfo)param.Value;
                         string postData =
                             string.Format(
                                 "--{0}\r\nContent-Disposition: form-data; name=\"{1}\"; filename=\"{1}\"\r\nContent-Type: {2}\r\n\r\n",
@@ -147,9 +145,9 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Internal
             {
                 foreach (var param in postParameters)
                 {
-                    if (param.Value is Internal.FileInfo)
+                    if (param.Value is FileInfo)
                     {
-                        var fileInfo = (Internal.FileInfo)param.Value;
+                        var fileInfo = (FileInfo)param.Value;
 
                         // Write the file data directly to the Stream, rather than serializing it to a string.
                         formDataStream.Write(fileInfo.FileContent, 0, fileInfo.FileContent.Length);
@@ -237,8 +235,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Internal
                     formData = GetMultipartFormData(formParams, formDataBoundary);
                 }
                 else
-                {
-                    client.ContentType = "multipart/form-data";
+                {                   
                     formData = GetMultipartFormData(formParams, string.Empty);
                 }                
             }
@@ -296,7 +293,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Internal
 #if NET20
                     using (Stream requestStream = client.GetRequestStream())
 #endif
-#if NETSTANDARD1_6
+#if NETSTANDARD2_0
                     using (Stream requestStream = client.GetRequestStreamAsync().Result) 
 #endif                    
                     {
@@ -352,7 +349,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Internal
 #if NET20
                     return request.GetResponse();
 #endif
-#if NETSTANDARD1_6
+#if NETSTANDARD2_0
                 try
                 {
                     return request.GetResponseAsync().Result;

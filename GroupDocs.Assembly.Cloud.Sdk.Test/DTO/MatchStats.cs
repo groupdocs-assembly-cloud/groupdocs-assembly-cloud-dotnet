@@ -65,5 +65,4 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Test.DTO
         /// </summary>
         public string Team2Name { get; set; }
     }
-
 }

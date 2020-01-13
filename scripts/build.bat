@@ -1,4 +1,3 @@
-dotnet restore c:\build\Aspose.Words.Cloud.Sdk\Aspose.Words.Cloud.Sdk.csproj
-dotnet restore c:\build\Aspose.Words.Cloud.Sdk.Tests\Aspose.Words.Cloud.Sdk.Tests.csproj
-dotnet restore c:\build\Aspose.Words.Cloud.Sdk.BddTests\Aspose.Words.Cloud.Sdk.BddTests.csproj
-msbuild c:\build\Aspose.Words.Cloud.Sdk.sln
+dotnet restore c:\build\GroupDocs.Assembly.Cloud.Sdk\GroupDocs.Assembly.Cloud.Sdk.csproj
+dotnet restore c:\build\GroupDocs.Assembly.Cloud.Sdk.Test\GroupDocs.Assembly.Cloud.Sdk.Test.csproj
+msbuild c:\build\GroupDocs.Assembly.Cloud.Sdk.sln
