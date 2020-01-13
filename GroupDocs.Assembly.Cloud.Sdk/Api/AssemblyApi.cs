@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="AssemblyApi.cs">
-//   Copyright (c) 2019 GroupDocs.Assembly for Cloud
+// <copyright company="GroupDocs" file="AssemblyApi.cs">
+//   Copyright (c) 2018 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,16 +23,15 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GroupDocs.Assembly.Cloud.Sdk
+namespace GroupDocs.Assembly.Cloud.Sdk.Api
 {
-    using System;
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
-    using GroupDocs.Assembly.Cloud.Sdk.Model.Requests;
+
     using GroupDocs.Assembly.Cloud.Sdk.Internal;
     using GroupDocs.Assembly.Cloud.Sdk.Internal.RequestHandlers;
-    using GroupDocs.Assembly.Cloud.Sdk.Api;
-    
+    using GroupDocs.Assembly.Cloud.Sdk.Model.Requests;
+
     /// <summary>
     /// GroupDocs.Assembly for Cloud API.
     /// </summary>
@@ -61,16 +60,6 @@ namespace GroupDocs.Assembly.Cloud.Sdk
         /// <param name="configuration">Configuration settings</param>
         public AssemblyApi(Configuration configuration)
         {
-            if (string.IsNullOrEmpty(configuration.AppKey?.Trim()))
-            {
-                throw new ArgumentException("AppKey configuration value must be non-empty string");
-            }
-
-            if (string.IsNullOrEmpty(configuration.AppSid?.Trim()))
-            {
-                throw new ArgumentException("AppSid configuration value must be non-empty string");
-            }
-
             this.configuration = configuration;
             
             var requestHandlers = new List<IRequestHandler>();
@@ -82,28 +71,21 @@ namespace GroupDocs.Assembly.Cloud.Sdk
         }                            
 
         /// <summary>
-        /// Builds a document using document template and XML or JSON data passed in request 
+        /// Builds a report using a data from request content. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PostAssembleDocumentRequest" /></param>
-        /// <returns><see cref="System.IO.Stream"/></returns>         
+        /// <param name="request">Request. <see cref="PostAssembleDocumentRequest" /></param> 
+        /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream PostAssembleDocument(PostAssembleDocumentRequest request)
         {
-           // verify the required parameter 'name' is set
+            // verify the required parameter 'name' is set
             if (request.Name == null) 
             {
                 throw new ApiException(400, "Missing required parameter 'name' when calling PostAssembleDocument");
             }
 
-           // verify the required parameter 'data' is set
-            if (request.Data == null) 
+            if (request.SaveOptions == null)
             {
-                throw new ApiException(400, "Missing required parameter 'data' when calling PostAssembleDocument");
-            }
-
-           // verify the required parameter 'saveOptions' is set
-            if (request.SaveOptions == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'saveOptions' when calling PostAssembleDocument");
+                throw new ApiException(400, "Missing required parameter 'SaveOptions' when calling PostAssembleDocument");
             }
 
             // create path and map variables
@@ -116,18 +98,32 @@ namespace GroupDocs.Assembly.Cloud.Sdk
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "destFileName", request.DestFileName);
-            var postBody = SerializationHelper.Serialize(request.SaveOptions); // http body (model) parameter
+
+            formParams.Add("saveOptions", request.SaveOptions);
             if (request.Data != null) 
             {
                 formParams.Add("data", this.apiInvoker.ToFileInfo(request.Data, "Data"));
             }
             
+            try 
+            {                               
                     return this.apiInvoker.InvokeBinaryApi(
-                    resourcePath, 
-                   "POST", 
-                    postBody, 
-                null, 
-                formParams);
+                        resourcePath, 
+                        "POST", 
+                        null, 
+                        null, 
+                        formParams);
+            } 
+            catch (ApiException ex) 
+            {
+                if (ex.ErrorCode == 404) 
+                {
+                    return null;
+                }
+                
+                throw;                
+            }
         }
     }
 }
+

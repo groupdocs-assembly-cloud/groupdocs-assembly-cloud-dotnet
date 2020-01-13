@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="PostAssembleDocumentRequest.cs">
-//   Copyright (c) 2019 GroupDocs.Assembly for Cloud
+// <copyright company="GroupDocs" file="PostAssembleDocumentRequest.cs">
+//   Copyright (c) 2018 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,8 +24,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests 
 {
-  using GroupDocs.Assembly.Cloud.Sdk.Model; 
-
   /// <summary>
   /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.PostAssembleDocument" /> operation.
   /// </summary>  
@@ -41,43 +39,43 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="PostAssembleDocumentRequest"/> class.
         /// </summary>
-        /// <param name="name">File name of template, which is located on a storage</param>
-        /// <param name="data">Report data in JSON or XML format</param>
-        /// <param name="saveOptions">Save options in json format</param>
-        /// <param name="folder">Folder path where template file is located(on a storage)</param>
-        /// <param name="destFileName">Result name of built document</param>
-        public PostAssembleDocumentRequest(string name, System.IO.Stream data, LoadSaveOptionsData saveOptions, string folder = null, string destFileName = null)             
+        /// <param name="name">Template file name on a storage.</param>
+        /// <param name="folder">Template folder name on a storage.</param>
+        /// <param name="destFileName">Report file name</param>
+        /// <param name="data">Report data</param>
+        /// <param name="saveOptions">saveOptions</param>
+        public PostAssembleDocumentRequest(string name, string folder = null, string destFileName = null, System.IO.Stream data = null, LoadSaveOptionsData saveOptions = null)             
         {
             this.Name = name;
-            this.Data = data;
-            this.SaveOptions = saveOptions;
             this.Folder = folder;
             this.DestFileName = destFileName;
+            this.Data = data;
+            this.SaveOptions = saveOptions;
         }
 
         /// <summary>
-        /// File name of template, which is located on a storage
+        /// Template file name on a storage.
         /// </summary>  
         public string Name { get; set; }
 
         /// <summary>
-        /// Report data in JSON or XML format
-        /// </summary>  
-        public System.IO.Stream Data { get; set; }
-
-        /// <summary>
-        /// Save options in json format
-        /// </summary>  
-        public LoadSaveOptionsData SaveOptions { get; set; }
-
-        /// <summary>
-        /// Folder path where template file is located(on a storage)
+        /// Template folder name on a storage.
         /// </summary>  
         public string Folder { get; set; }
 
         /// <summary>
-        /// Result name of built document
+        /// Report file name
         /// </summary>  
         public string DestFileName { get; set; }
+
+        /// <summary>
+        /// Report data
+        /// </summary>  
+        public System.IO.Stream Data { get; set; }
+
+        /// <summary>
+        /// Save options
+        /// </summary>
+        public LoadSaveOptionsData SaveOptions { get; set; }
   }
 }
