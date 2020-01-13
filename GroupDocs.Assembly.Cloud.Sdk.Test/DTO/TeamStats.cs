@@ -73,5 +73,4 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Test.DTO
         /// </summary>
         public int Points { get; set; }
     }
-
 }

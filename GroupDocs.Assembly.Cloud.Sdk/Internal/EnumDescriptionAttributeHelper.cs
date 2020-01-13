@@ -23,11 +23,10 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace GroupDocs.Assembly.Cloud.Sdk.Internal
+namespace GroupDocs.Assembly.Cloud.Sdk
 {
     using System;
-
-#if NETSTANDARD1_6
+#if NETSTANDARD2_0
     using System.Linq;
     using System.Reflection;    
 #endif
@@ -45,7 +44,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Internal
             var descriptionAttribute =
                 (EnumDescriptionAttribute)e.GetType().GetField(e.ToString()).GetCustomAttributes(typeof(EnumDescriptionAttribute), false)[0];
 #endif
-#if NETSTANDARD1_6
+#if NETSTANDARD2_0
              var descriptionAttribute =
                 (EnumDescriptionAttribute)e.GetType().GetTypeInfo().GetField(e.ToString()).GetCustomAttributes(typeof(EnumDescriptionAttribute), false).First();
 #endif
