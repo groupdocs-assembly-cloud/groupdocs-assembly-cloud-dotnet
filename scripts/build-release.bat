@@ -39,8 +39,8 @@ copy c:\Build\License c:\Build\package\License || goto end
 
 :Replace the nuget package with a new version
 c:\Build\.nuget\NuGet.exe add c:\Build\packages\Aspose.Words-Cloud.%SDK_VERSION%.0.nupkg -Source c:\Build\packages || goto end
-dotnet remove c:\Build\GroupDocs.Assembly.Cloud.Sdk.Tests\GroupDocs.Assembly.Cloud.Sdk.Tests.csproj reference ..\GroupDocs.Assembly.Cloud.Sdk\GroupDocs.Assembly.Cloud.Sdk.csproj || goto end
-dotnet add c:\Build\GroupDocs.Assembly.Cloud.Sdk.Tests\GroupDocs.Assembly.Cloud.Sdk.Tests.csproj package Aspose.Words-Cloud -s c:\Build\packages -v %SDK_VERSION%.0 || goto end
+dotnet remove c:\Build\GroupDocs.Assembly.Cloud.Sdk.Test\GroupDocs.Assembly.Cloud.Sdk.Test.csproj reference ..\GroupDocs.Assembly.Cloud.Sdk\GroupDocs.Assembly.Cloud.Sdk.csproj || goto end
+dotnet add c:\Build\GroupDocs.Assembly.Cloud.Sdk.Test\GroupDocs.Assembly.Cloud.Sdk.Test.csproj package Aspose.Words-Cloud -s c:\Build\packages -v %SDK_VERSION%.0 || goto end
 
 :Build tests
 c:\build\.nuget\NuGet.exe restore c:\build\GroupDocs.Assembly.Cloud.Sdk.sln || goto end
