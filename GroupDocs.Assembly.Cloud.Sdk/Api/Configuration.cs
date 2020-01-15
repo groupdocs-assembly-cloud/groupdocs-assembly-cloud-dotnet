@@ -94,7 +94,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk
 
         internal string GetApiRootUrl()
         {
-            var result = this.ApiBaseUrl + "/v4.0";
+            var result = this.ApiBaseUrl + "/v1.0";
 
             return result.EndsWith("/") ? result.Substring(0, result.Length - 1) : result;
         }       
