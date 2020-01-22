@@ -1,7 +1,7 @@
-properties([
-	gitLabConnection('gitlab'),
-	parameters([string(defaultValue: 'refs/heads/master', description: 'the branch to build', name: 'branch', trim: true)])
-])
+parameters {
+        string(name: 'branch', defaultValue: 'master', description: 'branch to test')		
+		string(name: 'testServerUrl', defaultValue: 'https://api-qa.groupdocs.cloud', description: 'server url')		
+}
 
 node('windows2019') {
 	try {
@@ -21,7 +21,7 @@ node('windows2019') {
 				bat 'mkdir testResults'
 				bat 'mkdir Settings'
 				withCredentials([usernamePassword(credentialsId: '82329510-1355-497f-828a-b8ff8b5f6a30', passwordVariable: 'AppKey', usernameVariable: 'AppSid')]) {
-					bat "echo {\"AppSid\":\"%AppSid%\",\"AppKey\":\"%AppKey%\",\"BaseUrl\":\"https://api-qa.groupdocs.cloud\" } > Settings\\servercreds.json"
+					bat "echo {\"AppSid\":\"%AppSid%\",\"AppKey\":\"%AppKey%\",\"BaseUrl\": \"$testServerUrl\" } > Settings\\servercreds.json"
 				}
 			}
 		}
