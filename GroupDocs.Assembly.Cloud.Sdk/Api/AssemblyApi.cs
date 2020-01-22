@@ -115,7 +115,12 @@ namespace GroupDocs.Assembly.Cloud.Sdk
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "destFileName", request.DestFileName);
-            var postBody = SerializationHelper.Serialize(request.SaveOptions); // http body (model) parameter
+            
+            if (request.SaveOptions != null) 
+            {
+                formParams.Add("saveOptions", request.SaveOptions);
+            }
+            
             if (request.Data != null) 
             {
                 formParams.Add("data", this.apiInvoker.ToFileInfo(request.Data, "Data"));
@@ -124,7 +129,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk
                     return this.apiInvoker.InvokeBinaryApi(
                     resourcePath, 
                    "POST", 
-                    postBody, 
+                    null, 
                 null, 
                 formParams);
         }
