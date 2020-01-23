@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="PostAssembleDocumentRequest.cs">
+// <copyright company="Aspose" file="FileUploadFileRequest.cs">
 //   Copyright (c) 2019 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -28,57 +28,43 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
   using GroupDocs.Assembly.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.PostAssembleDocument" /> operation.
+  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.FileUploadFile" /> operation.
   /// </summary>  
-  public class PostAssembleDocumentRequest  
+  public class FileUploadFileRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostAssembleDocumentRequest"/> class.
+        /// Initializes a new instance of the <see cref="FileUploadFileRequest"/> class.
         /// </summary>        
-        public PostAssembleDocumentRequest()
+        public FileUploadFileRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostAssembleDocumentRequest"/> class.
+        /// Initializes a new instance of the <see cref="FileUploadFileRequest"/> class.
         /// </summary>
-        /// <param name="name">File name of template, which is located on a storage</param>
-        /// <param name="data">Report data in JSON or XML format</param>
-        /// <param name="saveOptions">Save options in json format</param>
-        /// <param name="folder">Folder path where template file is located(on a storage)</param>
-        /// <param name="destFileName">Result name of built document</param>
-        public PostAssembleDocumentRequest(string name, System.IO.Stream data, LoadSaveOptionsData saveOptions, string folder = null, string destFileName = null)             
+        /// <param name="fileData">File to upload</param>
+        /// <param name="path">Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext              If the content is multipart and path does not contains the file name it tries to get them from filename parameter              from Content-Disposition header.</param>
+        /// <param name="storageName">Storage name</param>
+        public FileUploadFileRequest(System.IO.Stream fileData, string path, string storageName = null)             
         {
-            this.Name = name;
-            this.Data = data;
-            this.SaveOptions = saveOptions;
-            this.Folder = folder;
-            this.DestFileName = destFileName;
+            this.FileData = fileData;
+            this.Path = path;
+            this.StorageName = storageName;
         }
 
         /// <summary>
-        /// File name of template, which is located on a storage
+        /// File to upload
         /// </summary>  
-        public string Name { get; set; }
+        public System.IO.Stream FileData { get; set; }
 
         /// <summary>
-        /// Report data in JSON or XML format
+        /// Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext              If the content is multipart and path does not contains the file name it tries to get them from filename parameter              from Content-Disposition header.
         /// </summary>  
-        public System.IO.Stream Data { get; set; }
+        public string Path { get; set; }
 
         /// <summary>
-        /// Save options in json format
+        /// Storage name
         /// </summary>  
-        public LoadSaveOptionsData SaveOptions { get; set; }
-
-        /// <summary>
-        /// Folder path where template file is located(on a storage)
-        /// </summary>  
-        public string Folder { get; set; }
-
-        /// <summary>
-        /// Result name of built document
-        /// </summary>  
-        public string DestFileName { get; set; }
+        public string StorageName { get; set; }
   }
 }

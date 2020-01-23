@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="PostAssembleDocumentRequest.cs">
+// <copyright company="Aspose" file="FolderCopyFolderRequest.cs">
 //   Copyright (c) 2019 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -28,57 +28,50 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
   using GroupDocs.Assembly.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.PostAssembleDocument" /> operation.
+  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.FolderCopyFolder" /> operation.
   /// </summary>  
-  public class PostAssembleDocumentRequest  
+  public class FolderCopyFolderRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostAssembleDocumentRequest"/> class.
+        /// Initializes a new instance of the <see cref="FolderCopyFolderRequest"/> class.
         /// </summary>        
-        public PostAssembleDocumentRequest()
+        public FolderCopyFolderRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostAssembleDocumentRequest"/> class.
+        /// Initializes a new instance of the <see cref="FolderCopyFolderRequest"/> class.
         /// </summary>
-        /// <param name="name">File name of template, which is located on a storage</param>
-        /// <param name="data">Report data in JSON or XML format</param>
-        /// <param name="saveOptions">Save options in json format</param>
-        /// <param name="folder">Folder path where template file is located(on a storage)</param>
-        /// <param name="destFileName">Result name of built document</param>
-        public PostAssembleDocumentRequest(string name, System.IO.Stream data, LoadSaveOptionsData saveOptions, string folder = null, string destFileName = null)             
+        /// <param name="destPath">Destination folder path e.g. &#39;/dst&#39;</param>
+        /// <param name="srcPath">Source folder path e.g. /Folder1</param>
+        /// <param name="srcStorageName">Source storage name</param>
+        /// <param name="destStorageName">Destination storage name</param>
+        public FolderCopyFolderRequest(string destPath, string srcPath, string srcStorageName = null, string destStorageName = null)             
         {
-            this.Name = name;
-            this.Data = data;
-            this.SaveOptions = saveOptions;
-            this.Folder = folder;
-            this.DestFileName = destFileName;
+            this.DestPath = destPath;
+            this.SrcPath = srcPath;
+            this.SrcStorageName = srcStorageName;
+            this.DestStorageName = destStorageName;
         }
 
         /// <summary>
-        /// File name of template, which is located on a storage
+        /// Destination folder path e.g. '/dst'
         /// </summary>  
-        public string Name { get; set; }
+        public string DestPath { get; set; }
 
         /// <summary>
-        /// Report data in JSON or XML format
+        /// Source folder path e.g. /Folder1
         /// </summary>  
-        public System.IO.Stream Data { get; set; }
+        public string SrcPath { get; set; }
 
         /// <summary>
-        /// Save options in json format
+        /// Source storage name
         /// </summary>  
-        public LoadSaveOptionsData SaveOptions { get; set; }
+        public string SrcStorageName { get; set; }
 
         /// <summary>
-        /// Folder path where template file is located(on a storage)
+        /// Destination storage name
         /// </summary>  
-        public string Folder { get; set; }
-
-        /// <summary>
-        /// Result name of built document
-        /// </summary>  
-        public string DestFileName { get; set; }
+        public string DestStorageName { get; set; }
   }
 }

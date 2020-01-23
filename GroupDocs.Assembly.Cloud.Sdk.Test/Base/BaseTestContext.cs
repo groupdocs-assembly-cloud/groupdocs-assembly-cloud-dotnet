@@ -26,9 +26,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Test.Base
 {
     using System.IO;
 
-    using GroupDocs.Assembly.Cloud.Sdk;
-    using GroupDocs.Storage.Cloud.Sdk.Api;
-    using GroupDocs.Storage.Cloud.Sdk.Model.Requests;
+    using GroupDocs.Assembly.Cloud.Sdk;                  
     using Newtonsoft.Json;
 
     /// <summary>
@@ -55,8 +53,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Test.Base
 
             var configuration = new Configuration { ApiBaseUrl = this.keys.BaseUrl, AppKey = this.keys.AppKey, AppSid = this.keys.AppSid, DebugMode = true };
             this.AssemblyApi = new AssemblyApi(configuration);
-            this.StorageApi = new StorageApi(new Storage.Cloud.Sdk.Configuration { AppKey = this.AppKey, AppSid = this.AppSid, ApiBaseUrl = this.BaseProductUri, DebugMode = true });
-        }
+         }
 
         /// <summary>
         /// Base path to test data        
@@ -79,11 +76,6 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Test.Base
                 return "TestOut";
             }
         }
-
-        /// <summary>
-        /// Storage API
-        /// </summary>
-        protected StorageApi StorageApi { get; set; }
 
         /// <summary>
         /// Words API
@@ -131,22 +123,6 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Test.Base
         protected static string GetDataDir(string subfolder = null)
         {
             return Path.Combine(LocalTestDataFolder, string.IsNullOrEmpty(subfolder) ? string.Empty : subfolder);
-        }
-
-        /// <summary>
-        /// Uploads file to storage.
-        /// </summary>
-        /// <param name="path">Path in storage.</param>
-        /// <param name="versionId">Api version.</param>
-        /// <param name="storage">Storage.</param>
-        /// <param name="fileContent">File content.</param>
-        protected void UploadFileToStorage(string path, string versionId, string storage, byte[] fileContent)
-        {
-            using (var ms = new MemoryStream(fileContent))
-            {
-                var request = new PutCreateRequest(path, ms);
-                this.StorageApi.PutCreate(request);
-            }
         }
 
         private class Keys

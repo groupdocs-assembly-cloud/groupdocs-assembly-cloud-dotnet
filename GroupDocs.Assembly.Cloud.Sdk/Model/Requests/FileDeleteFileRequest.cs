@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="PostAssembleDocumentRequest.cs">
+// <copyright company="Aspose" file="FileDeleteFileRequest.cs">
 //   Copyright (c) 2019 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -28,57 +28,43 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
   using GroupDocs.Assembly.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.PostAssembleDocument" /> operation.
+  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.FileDeleteFile" /> operation.
   /// </summary>  
-  public class PostAssembleDocumentRequest  
+  public class FileDeleteFileRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostAssembleDocumentRequest"/> class.
+        /// Initializes a new instance of the <see cref="FileDeleteFileRequest"/> class.
         /// </summary>        
-        public PostAssembleDocumentRequest()
+        public FileDeleteFileRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostAssembleDocumentRequest"/> class.
+        /// Initializes a new instance of the <see cref="FileDeleteFileRequest"/> class.
         /// </summary>
-        /// <param name="name">File name of template, which is located on a storage</param>
-        /// <param name="data">Report data in JSON or XML format</param>
-        /// <param name="saveOptions">Save options in json format</param>
-        /// <param name="folder">Folder path where template file is located(on a storage)</param>
-        /// <param name="destFileName">Result name of built document</param>
-        public PostAssembleDocumentRequest(string name, System.IO.Stream data, LoadSaveOptionsData saveOptions, string folder = null, string destFileName = null)             
+        /// <param name="path">Path of the file including file name and extension e.g. /Folder1/file.ext</param>
+        /// <param name="storageName">Storage name</param>
+        /// <param name="versionId">File version ID to delete</param>
+        public FileDeleteFileRequest(string path, string storageName = null, string versionId = null)             
         {
-            this.Name = name;
-            this.Data = data;
-            this.SaveOptions = saveOptions;
-            this.Folder = folder;
-            this.DestFileName = destFileName;
+            this.Path = path;
+            this.StorageName = storageName;
+            this.VersionId = versionId;
         }
 
         /// <summary>
-        /// File name of template, which is located on a storage
+        /// Path of the file including file name and extension e.g. /Folder1/file.ext
         /// </summary>  
-        public string Name { get; set; }
+        public string Path { get; set; }
 
         /// <summary>
-        /// Report data in JSON or XML format
+        /// Storage name
         /// </summary>  
-        public System.IO.Stream Data { get; set; }
+        public string StorageName { get; set; }
 
         /// <summary>
-        /// Save options in json format
+        /// File version ID to delete
         /// </summary>  
-        public LoadSaveOptionsData SaveOptions { get; set; }
-
-        /// <summary>
-        /// Folder path where template file is located(on a storage)
-        /// </summary>  
-        public string Folder { get; set; }
-
-        /// <summary>
-        /// Result name of built document
-        /// </summary>  
-        public string DestFileName { get; set; }
+        public string VersionId { get; set; }
   }
 }

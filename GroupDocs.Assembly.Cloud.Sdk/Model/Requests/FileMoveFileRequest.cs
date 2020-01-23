@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="PostAssembleDocumentRequest.cs">
+// <copyright company="Aspose" file="FileMoveFileRequest.cs">
 //   Copyright (c) 2019 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -28,57 +28,57 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
   using GroupDocs.Assembly.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.PostAssembleDocument" /> operation.
+  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.FileMoveFile" /> operation.
   /// </summary>  
-  public class PostAssembleDocumentRequest  
+  public class FileMoveFileRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostAssembleDocumentRequest"/> class.
+        /// Initializes a new instance of the <see cref="FileMoveFileRequest"/> class.
         /// </summary>        
-        public PostAssembleDocumentRequest()
+        public FileMoveFileRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostAssembleDocumentRequest"/> class.
+        /// Initializes a new instance of the <see cref="FileMoveFileRequest"/> class.
         /// </summary>
-        /// <param name="name">File name of template, which is located on a storage</param>
-        /// <param name="data">Report data in JSON or XML format</param>
-        /// <param name="saveOptions">Save options in json format</param>
-        /// <param name="folder">Folder path where template file is located(on a storage)</param>
-        /// <param name="destFileName">Result name of built document</param>
-        public PostAssembleDocumentRequest(string name, System.IO.Stream data, LoadSaveOptionsData saveOptions, string folder = null, string destFileName = null)             
+        /// <param name="destPath">Destination file path e.g. &#39;/dest.ext&#39;</param>
+        /// <param name="srcPath">Source file&#39;s path e.g. &#39;/Folder 1/file.ext&#39; or &#39;/Bucket/Folder 1/file.ext&#39;</param>
+        /// <param name="srcStorageName">Source storage name</param>
+        /// <param name="destStorageName">Destination storage name</param>
+        /// <param name="versionId">File version ID to move</param>
+        public FileMoveFileRequest(string destPath, string srcPath, string srcStorageName = null, string destStorageName = null, string versionId = null)             
         {
-            this.Name = name;
-            this.Data = data;
-            this.SaveOptions = saveOptions;
-            this.Folder = folder;
-            this.DestFileName = destFileName;
+            this.DestPath = destPath;
+            this.SrcPath = srcPath;
+            this.SrcStorageName = srcStorageName;
+            this.DestStorageName = destStorageName;
+            this.VersionId = versionId;
         }
 
         /// <summary>
-        /// File name of template, which is located on a storage
+        /// Destination file path e.g. '/dest.ext'
         /// </summary>  
-        public string Name { get; set; }
+        public string DestPath { get; set; }
 
         /// <summary>
-        /// Report data in JSON or XML format
+        /// Source file's path e.g. '/Folder 1/file.ext' or '/Bucket/Folder 1/file.ext'
         /// </summary>  
-        public System.IO.Stream Data { get; set; }
+        public string SrcPath { get; set; }
 
         /// <summary>
-        /// Save options in json format
+        /// Source storage name
         /// </summary>  
-        public LoadSaveOptionsData SaveOptions { get; set; }
+        public string SrcStorageName { get; set; }
 
         /// <summary>
-        /// Folder path where template file is located(on a storage)
+        /// Destination storage name
         /// </summary>  
-        public string Folder { get; set; }
+        public string DestStorageName { get; set; }
 
         /// <summary>
-        /// Result name of built document
+        /// File version ID to move
         /// </summary>  
-        public string DestFileName { get; set; }
+        public string VersionId { get; set; }
   }
 }

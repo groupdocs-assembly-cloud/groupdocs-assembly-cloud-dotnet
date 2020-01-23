@@ -29,6 +29,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
     using GroupDocs.Assembly.Cloud.Sdk;
+    using GroupDocs.Assembly.Cloud.Sdk.Model;
     using GroupDocs.Assembly.Cloud.Sdk.Model.Requests;
     using GroupDocs.Assembly.Cloud.Sdk.RequestHandlers;
     
@@ -81,6 +82,359 @@ namespace GroupDocs.Assembly.Cloud.Sdk
         }                            
 
         /// <summary>
+        /// Copy file 
+        /// </summary>
+        /// <param name="request">Request. <see cref="FileCopyFileRequest" /></param>         
+        public void FileCopyFile(FileCopyFileRequest request)
+        {
+           // verify the required parameter 'srcPath' is set
+            if (request.SrcPath == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'srcPath' when calling FileCopyFile");
+            }
+
+            // create path and map variables
+            var resourcePath = this.configuration.GetApiRootUrl() + "/assembly/storage/file/copy/{srcPath}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "srcPath", request.SrcPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "destPath", request.DestPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "srcStorageName", request.SrcStorageName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "destStorageName", request.DestStorageName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "versionId", request.VersionId);
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+               "PUT", 
+                null, 
+                null, 
+                null);
+        }
+
+        /// <summary>
+        /// Delete file 
+        /// </summary>
+        /// <param name="request">Request. <see cref="FileDeleteFileRequest" /></param>         
+        public void FileDeleteFile(FileDeleteFileRequest request)
+        {
+           // verify the required parameter 'path' is set
+            if (request.Path == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'path' when calling FileDeleteFile");
+            }
+
+            // create path and map variables
+            var resourcePath = this.configuration.GetApiRootUrl() + "/assembly/storage/file/{path}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "path", request.Path);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storageName", request.StorageName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "versionId", request.VersionId);
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+               "DELETE", 
+                null, 
+                null, 
+                null);
+        }
+
+        /// <summary>
+        /// Download file 
+        /// </summary>
+        /// <param name="request">Request. <see cref="FileDownloadFileRequest" /></param>
+        /// <returns><see cref="System.IO.Stream"/></returns>         
+        public System.IO.Stream FileDownloadFile(FileDownloadFileRequest request)
+        {
+           // verify the required parameter 'path' is set
+            if (request.Path == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'path' when calling FileDownloadFile");
+            }
+
+            // create path and map variables
+            var resourcePath = this.configuration.GetApiRootUrl() + "/assembly/storage/file/{path}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "path", request.Path);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storageName", request.StorageName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "versionId", request.VersionId);
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+               "GET", 
+                null, 
+                null, 
+                null);
+            if (response != null)
+            {
+                return (System.IO.Stream)SerializationHelper.Deserialize(response, typeof(System.IO.Stream));
+            }
+                    
+            return null;
+        }
+
+        /// <summary>
+        /// Move file 
+        /// </summary>
+        /// <param name="request">Request. <see cref="FileMoveFileRequest" /></param>         
+        public void FileMoveFile(FileMoveFileRequest request)
+        {
+           // verify the required parameter 'srcPath' is set
+            if (request.SrcPath == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'srcPath' when calling FileMoveFile");
+            }
+
+            // create path and map variables
+            var resourcePath = this.configuration.GetApiRootUrl() + "/assembly/storage/file/move/{srcPath}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "srcPath", request.SrcPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "destPath", request.DestPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "srcStorageName", request.SrcStorageName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "destStorageName", request.DestStorageName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "versionId", request.VersionId);
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+               "PUT", 
+                null, 
+                null, 
+                null);
+        }
+
+        /// <summary>
+        /// Upload file 
+        /// </summary>
+        /// <param name="request">Request. <see cref="FileUploadFileRequest" /></param>
+        /// <returns><see cref="FilesUploadResult"/></returns>         
+        public FilesUploadResult FileUploadFile(FileUploadFileRequest request)
+        {
+           // verify the required parameter 'fileData' is set
+            if (request.FileData == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'fileData' when calling FileUploadFile");
+            }
+
+           // verify the required parameter 'path' is set
+            if (request.Path == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'path' when calling FileUploadFile");
+            }
+
+            // create path and map variables
+            var resourcePath = this.configuration.GetApiRootUrl() + "/assembly/storage/file/{path}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "path", request.Path);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storageName", request.StorageName);
+            if (request.FileData != null) 
+            {
+                formParams.Add("fileData", this.apiInvoker.ToFileInfo(request.FileData, "FileData"));
+            }
+            
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+               "PUT", 
+                null, 
+                null, 
+                formParams);
+            if (response != null)
+            {
+                return (FilesUploadResult)SerializationHelper.Deserialize(response, typeof(FilesUploadResult));
+            }
+                    
+            return null;
+        }
+
+        /// <summary>
+        /// Copy folder 
+        /// </summary>
+        /// <param name="request">Request. <see cref="FolderCopyFolderRequest" /></param>         
+        public void FolderCopyFolder(FolderCopyFolderRequest request)
+        {
+           // verify the required parameter 'srcPath' is set
+            if (request.SrcPath == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'srcPath' when calling FolderCopyFolder");
+            }
+
+            // create path and map variables
+            var resourcePath = this.configuration.GetApiRootUrl() + "/assembly/storage/folder/copy/{srcPath}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "srcPath", request.SrcPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "destPath", request.DestPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "srcStorageName", request.SrcStorageName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "destStorageName", request.DestStorageName);
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+               "PUT", 
+                null, 
+                null, 
+                null);
+        }
+
+        /// <summary>
+        /// Create the folder 
+        /// </summary>
+        /// <param name="request">Request. <see cref="FolderCreateFolderRequest" /></param>         
+        public void FolderCreateFolder(FolderCreateFolderRequest request)
+        {
+           // verify the required parameter 'path' is set
+            if (request.Path == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'path' when calling FolderCreateFolder");
+            }
+
+            // create path and map variables
+            var resourcePath = this.configuration.GetApiRootUrl() + "/assembly/storage/folder/{path}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "path", request.Path);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storageName", request.StorageName);
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+               "PUT", 
+                null, 
+                null, 
+                null);
+        }
+
+        /// <summary>
+        /// Delete folder 
+        /// </summary>
+        /// <param name="request">Request. <see cref="FolderDeleteFolderRequest" /></param>         
+        public void FolderDeleteFolder(FolderDeleteFolderRequest request)
+        {
+           // verify the required parameter 'path' is set
+            if (request.Path == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'path' when calling FolderDeleteFolder");
+            }
+
+            // create path and map variables
+            var resourcePath = this.configuration.GetApiRootUrl() + "/assembly/storage/folder/{path}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "path", request.Path);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storageName", request.StorageName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "recursive", request.Recursive);
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+               "DELETE", 
+                null, 
+                null, 
+                null);
+        }
+
+        /// <summary>
+        /// Get all files and folders within a folder 
+        /// </summary>
+        /// <param name="request">Request. <see cref="FolderGetFilesListRequest" /></param>
+        /// <returns><see cref="FilesList"/></returns>         
+        public FilesList FolderGetFilesList(FolderGetFilesListRequest request)
+        {
+           // verify the required parameter 'path' is set
+            if (request.Path == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'path' when calling FolderGetFilesList");
+            }
+
+            // create path and map variables
+            var resourcePath = this.configuration.GetApiRootUrl() + "/assembly/storage/folder/{path}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "path", request.Path);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storageName", request.StorageName);
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+               "GET", 
+                null, 
+                null, 
+                null);
+            if (response != null)
+            {
+                return (FilesList)SerializationHelper.Deserialize(response, typeof(FilesList));
+            }
+                    
+            return null;
+        }
+
+        /// <summary>
+        /// Move folder 
+        /// </summary>
+        /// <param name="request">Request. <see cref="FolderMoveFolderRequest" /></param>         
+        public void FolderMoveFolder(FolderMoveFolderRequest request)
+        {
+           // verify the required parameter 'srcPath' is set
+            if (request.SrcPath == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'srcPath' when calling FolderMoveFolder");
+            }
+
+            // create path and map variables
+            var resourcePath = this.configuration.GetApiRootUrl() + "/assembly/storage/folder/move/{srcPath}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "srcPath", request.SrcPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "destPath", request.DestPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "srcStorageName", request.SrcStorageName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "destStorageName", request.DestStorageName);
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+               "PUT", 
+                null, 
+                null, 
+                null);
+        }
+
+        /// <summary>
+        /// Retrieves list of supported file formats. 
+        /// </summary>
+        /// <param name="request">Request. <see cref="GetSupportedFileFormatsRequest" /></param>
+        /// <returns><see cref="FormatCollection"/></returns>         
+        public FormatCollection GetSupportedFileFormats(GetSupportedFileFormatsRequest request)
+        {
+            // create path and map variables
+            var resourcePath = this.configuration.GetApiRootUrl() + "/assembly/formats";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+               "GET", 
+                null, 
+                null, 
+                null);
+            if (response != null)
+            {
+                return (FormatCollection)SerializationHelper.Deserialize(response, typeof(FormatCollection));
+            }
+                    
+            return null;
+        }
+
+        /// <summary>
         /// Builds a document using document template and XML or JSON data passed in request 
         /// </summary>
         /// <param name="request">Request. <see cref="PostAssembleDocumentRequest" /></param>
@@ -115,7 +469,6 @@ namespace GroupDocs.Assembly.Cloud.Sdk
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "destFileName", request.DestFileName);
-            
             if (request.SaveOptions != null) 
             {
                 formParams.Add("saveOptions", request.SaveOptions);
