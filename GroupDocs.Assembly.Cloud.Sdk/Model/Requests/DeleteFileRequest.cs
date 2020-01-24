@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="FileMoveFileRequest.cs">
+// <copyright company="Aspose" file="DeleteFileRequest.cs">
 //   Copyright (c) 2019 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -28,56 +28,42 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
   using GroupDocs.Assembly.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.FileMoveFile" /> operation.
+  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.DeleteFile" /> operation.
   /// </summary>  
-  public class FileMoveFileRequest  
+  public class DeleteFileRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileMoveFileRequest"/> class.
+        /// Initializes a new instance of the <see cref="DeleteFileRequest"/> class.
         /// </summary>        
-        public FileMoveFileRequest()
+        public DeleteFileRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileMoveFileRequest"/> class.
+        /// Initializes a new instance of the <see cref="DeleteFileRequest"/> class.
         /// </summary>
-        /// <param name="destPath">Destination file path e.g. &#39;/dest.ext&#39;</param>
-        /// <param name="srcPath">Source file&#39;s path e.g. &#39;/Folder 1/file.ext&#39; or &#39;/Bucket/Folder 1/file.ext&#39;</param>
-        /// <param name="srcStorageName">Source storage name</param>
-        /// <param name="destStorageName">Destination storage name</param>
-        /// <param name="versionId">File version ID to move</param>
-        public FileMoveFileRequest(string destPath, string srcPath, string srcStorageName = null, string destStorageName = null, string versionId = null)             
+        /// <param name="argPath">Path of the file including file name and extension e.g. /Folder1/file.ext</param>
+        /// <param name="argStorageName">Storage name</param>
+        /// <param name="argVersionId">File version ID to delete</param>
+        public DeleteFileRequest(string argPath, string argStorageName = null, string argVersionId = null)             
         {
-            this.DestPath = destPath;
-            this.SrcPath = srcPath;
-            this.SrcStorageName = srcStorageName;
-            this.DestStorageName = destStorageName;
-            this.VersionId = versionId;
+            this.Path = argPath;
+            this.StorageName = argStorageName;
+            this.VersionId = argVersionId;
         }
 
         /// <summary>
-        /// Destination file path e.g. '/dest.ext'
+        /// Path of the file including file name and extension e.g. /Folder1/file.ext
         /// </summary>  
-        public string DestPath { get; set; }
+        public string Path { get; set; }
 
         /// <summary>
-        /// Source file's path e.g. '/Folder 1/file.ext' or '/Bucket/Folder 1/file.ext'
+        /// Storage name
         /// </summary>  
-        public string SrcPath { get; set; }
+        public string StorageName { get; set; }
 
         /// <summary>
-        /// Source storage name
-        /// </summary>  
-        public string SrcStorageName { get; set; }
-
-        /// <summary>
-        /// Destination storage name
-        /// </summary>  
-        public string DestStorageName { get; set; }
-
-        /// <summary>
-        /// File version ID to move
+        /// File version ID to delete
         /// </summary>  
         public string VersionId { get; set; }
   }

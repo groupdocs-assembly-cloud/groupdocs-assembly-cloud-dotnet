@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="FileCopyFileRequest.cs">
+// <copyright company="Aspose" file="UploadFileRequest.cs">
 //   Copyright (c) 2019 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -28,57 +28,43 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
   using GroupDocs.Assembly.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.FileCopyFile" /> operation.
+  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.UploadFile" /> operation.
   /// </summary>  
-  public class FileCopyFileRequest  
+  public class UploadFileRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileCopyFileRequest"/> class.
+        /// Initializes a new instance of the <see cref="UploadFileRequest"/> class.
         /// </summary>        
-        public FileCopyFileRequest()
+        public UploadFileRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileCopyFileRequest"/> class.
+        /// Initializes a new instance of the <see cref="UploadFileRequest"/> class.
         /// </summary>
-        /// <param name="destPath">Destination file path</param>
-        /// <param name="srcPath">Source file&#39;s path e.g. &#39;/Folder 1/file.ext&#39; or &#39;/Bucket/Folder 1/file.ext&#39;</param>
-        /// <param name="srcStorageName">Source storage name</param>
-        /// <param name="destStorageName">Destination storage name</param>
-        /// <param name="versionId">File version ID to copy</param>
-        public FileCopyFileRequest(string destPath, string srcPath, string srcStorageName = null, string destStorageName = null, string versionId = null)             
+        /// <param name="argFile">File to upload</param>
+        /// <param name="argPath">Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext              If the content is multipart and path does not contains the file name it tries to get them from filename parameter              from Content-Disposition header.</param>
+        /// <param name="argStorageName">Storage name</param>
+        public UploadFileRequest(System.IO.Stream argFile, string argPath, string argStorageName = null)             
         {
-            this.DestPath = destPath;
-            this.SrcPath = srcPath;
-            this.SrcStorageName = srcStorageName;
-            this.DestStorageName = destStorageName;
-            this.VersionId = versionId;
+            this.File = argFile;
+            this.Path = argPath;
+            this.StorageName = argStorageName;
         }
 
         /// <summary>
-        /// Destination file path
+        /// File to upload
         /// </summary>  
-        public string DestPath { get; set; }
+        public System.IO.Stream File { get; set; }
 
         /// <summary>
-        /// Source file's path e.g. '/Folder 1/file.ext' or '/Bucket/Folder 1/file.ext'
+        /// Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext              If the content is multipart and path does not contains the file name it tries to get them from filename parameter              from Content-Disposition header.
         /// </summary>  
-        public string SrcPath { get; set; }
+        public string Path { get; set; }
 
         /// <summary>
-        /// Source storage name
+        /// Storage name
         /// </summary>  
-        public string SrcStorageName { get; set; }
-
-        /// <summary>
-        /// Destination storage name
-        /// </summary>  
-        public string DestStorageName { get; set; }
-
-        /// <summary>
-        /// File version ID to copy
-        /// </summary>  
-        public string VersionId { get; set; }
+        public string StorageName { get; set; }
   }
 }

@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="FolderMoveFolderRequest.cs">
+// <copyright company="Aspose" file="MoveFileRequest.cs">
 //   Copyright (c) 2019 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -28,39 +28,41 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
   using GroupDocs.Assembly.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.FolderMoveFolder" /> operation.
+  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.MoveFile" /> operation.
   /// </summary>  
-  public class FolderMoveFolderRequest  
+  public class MoveFileRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FolderMoveFolderRequest"/> class.
+        /// Initializes a new instance of the <see cref="MoveFileRequest"/> class.
         /// </summary>        
-        public FolderMoveFolderRequest()
+        public MoveFileRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FolderMoveFolderRequest"/> class.
+        /// Initializes a new instance of the <see cref="MoveFileRequest"/> class.
         /// </summary>
-        /// <param name="destPath">Destination folder path to move to e.g &#39;/dst&#39;</param>
-        /// <param name="srcPath">Source folder path e.g. /Folder1</param>
-        /// <param name="srcStorageName">Source storage name</param>
-        /// <param name="destStorageName">Destination storage name</param>
-        public FolderMoveFolderRequest(string destPath, string srcPath, string srcStorageName = null, string destStorageName = null)             
+        /// <param name="argDestPath">Destination file path e.g. &#39;/dest.ext&#39;</param>
+        /// <param name="argSrcPath">Source file&#39;s path e.g. &#39;/Folder 1/file.ext&#39; or &#39;/Bucket/Folder 1/file.ext&#39;</param>
+        /// <param name="argSrcStorageName">Source storage name</param>
+        /// <param name="argDestStorageName">Destination storage name</param>
+        /// <param name="argVersionId">File version ID to move</param>
+        public MoveFileRequest(string argDestPath, string argSrcPath, string argSrcStorageName = null, string argDestStorageName = null, string argVersionId = null)             
         {
-            this.DestPath = destPath;
-            this.SrcPath = srcPath;
-            this.SrcStorageName = srcStorageName;
-            this.DestStorageName = destStorageName;
+            this.DestPath = argDestPath;
+            this.SrcPath = argSrcPath;
+            this.SrcStorageName = argSrcStorageName;
+            this.DestStorageName = argDestStorageName;
+            this.VersionId = argVersionId;
         }
 
         /// <summary>
-        /// Destination folder path to move to e.g '/dst'
+        /// Destination file path e.g. '/dest.ext'
         /// </summary>  
         public string DestPath { get; set; }
 
         /// <summary>
-        /// Source folder path e.g. /Folder1
+        /// Source file's path e.g. '/Folder 1/file.ext' or '/Bucket/Folder 1/file.ext'
         /// </summary>  
         public string SrcPath { get; set; }
 
@@ -73,5 +75,10 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
         /// Destination storage name
         /// </summary>  
         public string DestStorageName { get; set; }
+
+        /// <summary>
+        /// File version ID to move
+        /// </summary>  
+        public string VersionId { get; set; }
   }
 }

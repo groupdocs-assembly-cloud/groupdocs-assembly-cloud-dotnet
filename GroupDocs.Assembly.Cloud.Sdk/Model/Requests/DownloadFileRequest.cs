@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="FolderCopyFolderRequest.cs">
+// <copyright company="Aspose" file="DownloadFileRequest.cs">
 //   Copyright (c) 2019 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -28,50 +28,43 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
   using GroupDocs.Assembly.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.FolderCopyFolder" /> operation.
+  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.DownloadFile" /> operation.
   /// </summary>  
-  public class FolderCopyFolderRequest  
+  public class DownloadFileRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FolderCopyFolderRequest"/> class.
+        /// Initializes a new instance of the <see cref="DownloadFileRequest"/> class.
         /// </summary>        
-        public FolderCopyFolderRequest()
+        public DownloadFileRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FolderCopyFolderRequest"/> class.
+        /// Initializes a new instance of the <see cref="DownloadFileRequest"/> class.
         /// </summary>
-        /// <param name="destPath">Destination folder path e.g. &#39;/dst&#39;</param>
-        /// <param name="srcPath">Source folder path e.g. /Folder1</param>
-        /// <param name="srcStorageName">Source storage name</param>
-        /// <param name="destStorageName">Destination storage name</param>
-        public FolderCopyFolderRequest(string destPath, string srcPath, string srcStorageName = null, string destStorageName = null)             
+        /// <param name="argPath">Path of the file including the file name and extension e.g. /folder1/file.ext</param>
+        /// <param name="argStorageName">Storage name</param>
+        /// <param name="argVersionId">File version ID to download</param>
+        public DownloadFileRequest(string argPath, string argStorageName = null, string argVersionId = null)             
         {
-            this.DestPath = destPath;
-            this.SrcPath = srcPath;
-            this.SrcStorageName = srcStorageName;
-            this.DestStorageName = destStorageName;
+            this.Path = argPath;
+            this.StorageName = argStorageName;
+            this.VersionId = argVersionId;
         }
 
         /// <summary>
-        /// Destination folder path e.g. '/dst'
+        /// Path of the file including the file name and extension e.g. /folder1/file.ext
         /// </summary>  
-        public string DestPath { get; set; }
+        public string Path { get; set; }
 
         /// <summary>
-        /// Source folder path e.g. /Folder1
+        /// Storage name
         /// </summary>  
-        public string SrcPath { get; set; }
+        public string StorageName { get; set; }
 
         /// <summary>
-        /// Source storage name
+        /// File version ID to download
         /// </summary>  
-        public string SrcStorageName { get; set; }
-
-        /// <summary>
-        /// Destination storage name
-        /// </summary>  
-        public string DestStorageName { get; set; }
+        public string VersionId { get; set; }
   }
 }

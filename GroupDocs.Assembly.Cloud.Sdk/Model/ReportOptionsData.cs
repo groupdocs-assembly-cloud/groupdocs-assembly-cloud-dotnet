@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="LoadSaveOptionsData.cs">
+// <copyright company="Aspose" file="ReportOptionsData.cs">
 //   Copyright (c) 2019 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -36,12 +36,17 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
   /// <summary>
   /// Save options data which is using for specifying additional save options, like save format and etc.
   /// </summary>  
-  public class LoadSaveOptionsData 
+  public class ReportOptionsData 
   {                       
         /// <summary>
         /// Save format for assembled document
         /// </summary>  
         public string SaveFormat { get; set; }
+
+        /// <summary>
+        /// Data for report
+        /// </summary>  
+        public string ReportData { get; set; }
 
         /// <summary>
         /// Get the string presentation of the object
@@ -50,8 +55,9 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
         public override string ToString()  
         {
           var sb = new StringBuilder();
-          sb.Append("class LoadSaveOptionsData {\n");
+          sb.Append("class ReportOptionsData {\n");
           sb.Append("  SaveFormat: ").Append(this.SaveFormat).Append("\n");
+          sb.Append("  ReportData: ").Append(this.ReportData).Append("\n");
           sb.Append("}\n");
           return sb.ToString();
         }

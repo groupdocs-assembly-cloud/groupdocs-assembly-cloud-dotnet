@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="FolderGetFilesListRequest.cs">
+// <copyright company="Aspose" file="CopyFolderRequest.cs">
 //   Copyright (c) 2019 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -28,36 +28,50 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
   using GroupDocs.Assembly.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.FolderGetFilesList" /> operation.
+  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.CopyFolder" /> operation.
   /// </summary>  
-  public class FolderGetFilesListRequest  
+  public class CopyFolderRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FolderGetFilesListRequest"/> class.
+        /// Initializes a new instance of the <see cref="CopyFolderRequest"/> class.
         /// </summary>        
-        public FolderGetFilesListRequest()
+        public CopyFolderRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FolderGetFilesListRequest"/> class.
+        /// Initializes a new instance of the <see cref="CopyFolderRequest"/> class.
         /// </summary>
-        /// <param name="path">Folder path e.g. /Folder1</param>
-        /// <param name="storageName">Storage name</param>
-        public FolderGetFilesListRequest(string path, string storageName = null)             
+        /// <param name="argDestPath">Destination folder path e.g. &#39;/dst&#39;</param>
+        /// <param name="argSrcPath">Source folder path e.g. /Folder1</param>
+        /// <param name="argSrcStorageName">Source storage name</param>
+        /// <param name="argDestStorageName">Destination storage name</param>
+        public CopyFolderRequest(string argDestPath, string argSrcPath, string argSrcStorageName = null, string argDestStorageName = null)             
         {
-            this.Path = path;
-            this.StorageName = storageName;
+            this.DestPath = argDestPath;
+            this.SrcPath = argSrcPath;
+            this.SrcStorageName = argSrcStorageName;
+            this.DestStorageName = argDestStorageName;
         }
 
         /// <summary>
-        /// Folder path e.g. /Folder1
+        /// Destination folder path e.g. '/dst'
         /// </summary>  
-        public string Path { get; set; }
+        public string DestPath { get; set; }
 
         /// <summary>
-        /// Storage name
+        /// Source folder path e.g. /Folder1
         /// </summary>  
-        public string StorageName { get; set; }
+        public string SrcPath { get; set; }
+
+        /// <summary>
+        /// Source storage name
+        /// </summary>  
+        public string SrcStorageName { get; set; }
+
+        /// <summary>
+        /// Destination storage name
+        /// </summary>  
+        public string DestStorageName { get; set; }
   }
 }

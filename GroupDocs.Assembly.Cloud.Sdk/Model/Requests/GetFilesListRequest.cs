@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="FolderDeleteFolderRequest.cs">
+// <copyright company="Aspose" file="GetFilesListRequest.cs">
 //   Copyright (c) 2019 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -28,32 +28,30 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
   using GroupDocs.Assembly.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.FolderDeleteFolder" /> operation.
+  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.GetFilesList" /> operation.
   /// </summary>  
-  public class FolderDeleteFolderRequest  
+  public class GetFilesListRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FolderDeleteFolderRequest"/> class.
+        /// Initializes a new instance of the <see cref="GetFilesListRequest"/> class.
         /// </summary>        
-        public FolderDeleteFolderRequest()
+        public GetFilesListRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FolderDeleteFolderRequest"/> class.
+        /// Initializes a new instance of the <see cref="GetFilesListRequest"/> class.
         /// </summary>
-        /// <param name="path">Folder path e.g. /Folder1s</param>
-        /// <param name="storageName">Storage name</param>
-        /// <param name="recursive">Enable to delete folders, subfolders and files</param>
-        public FolderDeleteFolderRequest(string path, string storageName = null, bool? recursive = null)             
+        /// <param name="argPath">Folder path e.g. /Folder1</param>
+        /// <param name="argStorageName">Storage name</param>
+        public GetFilesListRequest(string argPath, string argStorageName = null)             
         {
-            this.Path = path;
-            this.StorageName = storageName;
-            this.Recursive = recursive;
+            this.Path = argPath;
+            this.StorageName = argStorageName;
         }
 
         /// <summary>
-        /// Folder path e.g. /Folder1s
+        /// Folder path e.g. /Folder1
         /// </summary>  
         public string Path { get; set; }
 
@@ -61,10 +59,5 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
         /// Storage name
         /// </summary>  
         public string StorageName { get; set; }
-
-        /// <summary>
-        /// Enable to delete folders, subfolders and files
-        /// </summary>  
-        public bool? Recursive { get; set; }
   }
 }

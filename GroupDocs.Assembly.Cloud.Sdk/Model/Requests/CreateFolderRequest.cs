@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="FileDeleteFileRequest.cs">
+// <copyright company="Aspose" file="CreateFolderRequest.cs">
 //   Copyright (c) 2019 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -28,32 +28,30 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
   using GroupDocs.Assembly.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.FileDeleteFile" /> operation.
+  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.CreateFolder" /> operation.
   /// </summary>  
-  public class FileDeleteFileRequest  
+  public class CreateFolderRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileDeleteFileRequest"/> class.
+        /// Initializes a new instance of the <see cref="CreateFolderRequest"/> class.
         /// </summary>        
-        public FileDeleteFileRequest()
+        public CreateFolderRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileDeleteFileRequest"/> class.
+        /// Initializes a new instance of the <see cref="CreateFolderRequest"/> class.
         /// </summary>
-        /// <param name="path">Path of the file including file name and extension e.g. /Folder1/file.ext</param>
-        /// <param name="storageName">Storage name</param>
-        /// <param name="versionId">File version ID to delete</param>
-        public FileDeleteFileRequest(string path, string storageName = null, string versionId = null)             
+        /// <param name="argPath">Target folder&#39;s path e.g. Folder1/Folder2/. The folders will be created recursively</param>
+        /// <param name="argStorageName">Storage name</param>
+        public CreateFolderRequest(string argPath, string argStorageName = null)             
         {
-            this.Path = path;
-            this.StorageName = storageName;
-            this.VersionId = versionId;
+            this.Path = argPath;
+            this.StorageName = argStorageName;
         }
 
         /// <summary>
-        /// Path of the file including file name and extension e.g. /Folder1/file.ext
+        /// Target folder's path e.g. Folder1/Folder2/. The folders will be created recursively
         /// </summary>  
         public string Path { get; set; }
 
@@ -61,10 +59,5 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
         /// Storage name
         /// </summary>  
         public string StorageName { get; set; }
-
-        /// <summary>
-        /// File version ID to delete
-        /// </summary>  
-        public string VersionId { get; set; }
   }
 }

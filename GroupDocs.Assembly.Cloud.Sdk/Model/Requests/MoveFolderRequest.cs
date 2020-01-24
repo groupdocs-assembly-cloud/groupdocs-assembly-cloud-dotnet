@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="FileUploadFileRequest.cs">
+// <copyright company="Aspose" file="MoveFolderRequest.cs">
 //   Copyright (c) 2019 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -28,43 +28,50 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
   using GroupDocs.Assembly.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.FileUploadFile" /> operation.
+  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.MoveFolder" /> operation.
   /// </summary>  
-  public class FileUploadFileRequest  
+  public class MoveFolderRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileUploadFileRequest"/> class.
+        /// Initializes a new instance of the <see cref="MoveFolderRequest"/> class.
         /// </summary>        
-        public FileUploadFileRequest()
+        public MoveFolderRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileUploadFileRequest"/> class.
+        /// Initializes a new instance of the <see cref="MoveFolderRequest"/> class.
         /// </summary>
-        /// <param name="fileData">File to upload</param>
-        /// <param name="path">Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext              If the content is multipart and path does not contains the file name it tries to get them from filename parameter              from Content-Disposition header.</param>
-        /// <param name="storageName">Storage name</param>
-        public FileUploadFileRequest(System.IO.Stream fileData, string path, string storageName = null)             
+        /// <param name="argDestPath">Destination folder path to move to e.g &#39;/dst&#39;</param>
+        /// <param name="argSrcPath">Source folder path e.g. /Folder1</param>
+        /// <param name="argSrcStorageName">Source storage name</param>
+        /// <param name="argDestStorageName">Destination storage name</param>
+        public MoveFolderRequest(string argDestPath, string argSrcPath, string argSrcStorageName = null, string argDestStorageName = null)             
         {
-            this.FileData = fileData;
-            this.Path = path;
-            this.StorageName = storageName;
+            this.DestPath = argDestPath;
+            this.SrcPath = argSrcPath;
+            this.SrcStorageName = argSrcStorageName;
+            this.DestStorageName = argDestStorageName;
         }
 
         /// <summary>
-        /// File to upload
+        /// Destination folder path to move to e.g '/dst'
         /// </summary>  
-        public System.IO.Stream FileData { get; set; }
+        public string DestPath { get; set; }
 
         /// <summary>
-        /// Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext              If the content is multipart and path does not contains the file name it tries to get them from filename parameter              from Content-Disposition header.
+        /// Source folder path e.g. /Folder1
         /// </summary>  
-        public string Path { get; set; }
+        public string SrcPath { get; set; }
 
         /// <summary>
-        /// Storage name
+        /// Source storage name
         /// </summary>  
-        public string StorageName { get; set; }
+        public string SrcStorageName { get; set; }
+
+        /// <summary>
+        /// Destination storage name
+        /// </summary>  
+        public string DestStorageName { get; set; }
   }
 }

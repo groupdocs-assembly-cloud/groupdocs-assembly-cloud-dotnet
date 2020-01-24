@@ -42,18 +42,16 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="PostAssembleDocumentRequest"/> class.
         /// </summary>
-        /// <param name="name">File name of template, which is located on a storage</param>
-        /// <param name="data">Report data in JSON or XML format</param>
-        /// <param name="saveOptions">Save options in json format</param>
-        /// <param name="folder">Folder path where template file is located(on a storage)</param>
-        /// <param name="destFileName">Result name of built document</param>
-        public PostAssembleDocumentRequest(string name, System.IO.Stream data, LoadSaveOptionsData saveOptions, string folder = null, string destFileName = null)             
+        /// <param name="argName">File name of template, which is located on a storage</param>
+        /// <param name="argReportData">Report Data Options. It should be JSON with SaveFormat and ReportData</param>
+        /// <param name="argFolder">Folder path where template file is located(on a storage)</param>
+        /// <param name="argDestFileName">Result name of built document</param>
+        public PostAssembleDocumentRequest(string argName, ReportOptionsData argReportData, string argFolder = null, string argDestFileName = null)             
         {
-            this.Name = name;
-            this.Data = data;
-            this.SaveOptions = saveOptions;
-            this.Folder = folder;
-            this.DestFileName = destFileName;
+            this.Name = argName;
+            this.ReportData = argReportData;
+            this.Folder = argFolder;
+            this.DestFileName = argDestFileName;
         }
 
         /// <summary>
@@ -62,14 +60,9 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
         public string Name { get; set; }
 
         /// <summary>
-        /// Report data in JSON or XML format
+        /// Report Data Options. It should be JSON with SaveFormat and ReportData
         /// </summary>  
-        public System.IO.Stream Data { get; set; }
-
-        /// <summary>
-        /// Save options in json format
-        /// </summary>  
-        public LoadSaveOptionsData SaveOptions { get; set; }
+        public ReportOptionsData ReportData { get; set; }
 
         /// <summary>
         /// Folder path where template file is located(on a storage)

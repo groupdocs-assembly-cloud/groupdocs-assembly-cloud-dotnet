@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="FolderCreateFolderRequest.cs">
+// <copyright company="Aspose" file="DeleteFolderRequest.cs">
 //   Copyright (c) 2019 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -28,30 +28,32 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
   using GroupDocs.Assembly.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.FolderCreateFolder" /> operation.
+  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.DeleteFolder" /> operation.
   /// </summary>  
-  public class FolderCreateFolderRequest  
+  public class DeleteFolderRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FolderCreateFolderRequest"/> class.
+        /// Initializes a new instance of the <see cref="DeleteFolderRequest"/> class.
         /// </summary>        
-        public FolderCreateFolderRequest()
+        public DeleteFolderRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FolderCreateFolderRequest"/> class.
+        /// Initializes a new instance of the <see cref="DeleteFolderRequest"/> class.
         /// </summary>
-        /// <param name="path">Target folder&#39;s path e.g. Folder1/Folder2/. The folders will be created recursively</param>
-        /// <param name="storageName">Storage name</param>
-        public FolderCreateFolderRequest(string path, string storageName = null)             
+        /// <param name="argPath">Folder path e.g. /Folder1s</param>
+        /// <param name="argStorageName">Storage name</param>
+        /// <param name="argRecursive">Enable to delete folders, subfolders and files</param>
+        public DeleteFolderRequest(string argPath, string argStorageName = null, bool? argRecursive = null)             
         {
-            this.Path = path;
-            this.StorageName = storageName;
+            this.Path = argPath;
+            this.StorageName = argStorageName;
+            this.Recursive = argRecursive;
         }
 
         /// <summary>
-        /// Target folder's path e.g. Folder1/Folder2/. The folders will be created recursively
+        /// Folder path e.g. /Folder1s
         /// </summary>  
         public string Path { get; set; }
 
@@ -59,5 +61,10 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
         /// Storage name
         /// </summary>  
         public string StorageName { get; set; }
+
+        /// <summary>
+        /// Enable to delete folders, subfolders and files
+        /// </summary>  
+        public bool? Recursive { get; set; }
   }
 }
