@@ -469,6 +469,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "destFileName", request.DestFileName);
+
             if (request.SaveOptions != null) 
             {
                 formParams.Add("saveOptions", request.SaveOptions);
