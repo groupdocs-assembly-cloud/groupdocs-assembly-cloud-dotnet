@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="LoadSaveOptionsData.cs">
+// <copyright company="Aspose" file="ErrorDetails.cs">
 //   Copyright (c) 2019 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -34,14 +34,19 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Save options data which is using for specifying additional save options, like save format and etc.
+  /// The error details
   /// </summary>  
-  public class LoadSaveOptionsData 
+  public class ErrorDetails 
   {                       
         /// <summary>
-        /// Save format for assembled document
+        /// The request id
         /// </summary>  
-        public string SaveFormat { get; set; }
+        public string RequestId { get; set; }
+
+        /// <summary>
+        /// Date
+        /// </summary>  
+        public DateTime? Date { get; set; }
 
         /// <summary>
         /// Get the string presentation of the object
@@ -50,8 +55,9 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
         public override string ToString()  
         {
           var sb = new StringBuilder();
-          sb.Append("class LoadSaveOptionsData {\n");
-          sb.Append("  SaveFormat: ").Append(this.SaveFormat).Append("\n");
+          sb.Append("class ErrorDetails {\n");
+          sb.Append("  RequestId: ").Append(this.RequestId).Append("\n");
+          sb.Append("  Date: ").Append(this.Date).Append("\n");
           sb.Append("}\n");
           return sb.ToString();
         }

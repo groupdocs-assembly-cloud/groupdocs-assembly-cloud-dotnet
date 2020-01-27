@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="PostAssembleDocumentRequest.cs">
+// <copyright company="Aspose" file="DeleteFolderRequest.cs">
 //   Copyright (c) 2019 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -28,50 +28,43 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
   using GroupDocs.Assembly.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.PostAssembleDocument" /> operation.
+  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.DeleteFolder" /> operation.
   /// </summary>  
-  public class PostAssembleDocumentRequest  
+  public class DeleteFolderRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostAssembleDocumentRequest"/> class.
+        /// Initializes a new instance of the <see cref="DeleteFolderRequest"/> class.
         /// </summary>        
-        public PostAssembleDocumentRequest()
+        public DeleteFolderRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostAssembleDocumentRequest"/> class.
+        /// Initializes a new instance of the <see cref="DeleteFolderRequest"/> class.
         /// </summary>
-        /// <param name="argName">File name of template, which is located on a storage</param>
-        /// <param name="argReportData">Report Data Options. It should be JSON with SaveFormat and ReportData</param>
-        /// <param name="argFolder">Folder path where template file is located(on a storage)</param>
-        /// <param name="argDestFileName">Result name of built document</param>
-        public PostAssembleDocumentRequest(string argName, ReportOptionsData argReportData, string argFolder = null, string argDestFileName = null)             
+        /// <param name="argPath">Folder path e.g. /Folder1s</param>
+        /// <param name="argStorageName">Storage name</param>
+        /// <param name="argRecursive">Enable to delete folders, subfolders and files</param>
+        public DeleteFolderRequest(string argPath, string argStorageName = null, bool? argRecursive = null)             
         {
-            this.Name = argName;
-            this.ReportData = argReportData;
-            this.Folder = argFolder;
-            this.DestFileName = argDestFileName;
+            this.Path = argPath;
+            this.StorageName = argStorageName;
+            this.Recursive = argRecursive;
         }
 
         /// <summary>
-        /// File name of template, which is located on a storage
+        /// Folder path e.g. /Folder1s
         /// </summary>  
-        public string Name { get; set; }
+        public string Path { get; set; }
 
         /// <summary>
-        /// Report Data Options. It should be JSON with SaveFormat and ReportData
+        /// Storage name
         /// </summary>  
-        public ReportOptionsData ReportData { get; set; }
+        public string StorageName { get; set; }
 
         /// <summary>
-        /// Folder path where template file is located(on a storage)
+        /// Enable to delete folders, subfolders and files
         /// </summary>  
-        public string Folder { get; set; }
-
-        /// <summary>
-        /// Result name of built document
-        /// </summary>  
-        public string DestFileName { get; set; }
+        public bool? Recursive { get; set; }
   }
 }

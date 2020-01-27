@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="PostAssembleDocumentRequest.cs">
+// <copyright company="Aspose" file="MoveFileRequest.cs">
 //   Copyright (c) 2019 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -28,50 +28,57 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
   using GroupDocs.Assembly.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.PostAssembleDocument" /> operation.
+  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.MoveFile" /> operation.
   /// </summary>  
-  public class PostAssembleDocumentRequest  
+  public class MoveFileRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostAssembleDocumentRequest"/> class.
+        /// Initializes a new instance of the <see cref="MoveFileRequest"/> class.
         /// </summary>        
-        public PostAssembleDocumentRequest()
+        public MoveFileRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostAssembleDocumentRequest"/> class.
+        /// Initializes a new instance of the <see cref="MoveFileRequest"/> class.
         /// </summary>
-        /// <param name="argName">File name of template, which is located on a storage</param>
-        /// <param name="argReportData">Report Data Options. It should be JSON with SaveFormat and ReportData</param>
-        /// <param name="argFolder">Folder path where template file is located(on a storage)</param>
-        /// <param name="argDestFileName">Result name of built document</param>
-        public PostAssembleDocumentRequest(string argName, ReportOptionsData argReportData, string argFolder = null, string argDestFileName = null)             
+        /// <param name="argDestPath">Destination file path e.g. &#39;/dest.ext&#39;</param>
+        /// <param name="argSrcPath">Source file&#39;s path e.g. &#39;/Folder 1/file.ext&#39; or &#39;/Bucket/Folder 1/file.ext&#39;</param>
+        /// <param name="argSrcStorageName">Source storage name</param>
+        /// <param name="argDestStorageName">Destination storage name</param>
+        /// <param name="argVersionId">File version ID to move</param>
+        public MoveFileRequest(string argDestPath, string argSrcPath, string argSrcStorageName = null, string argDestStorageName = null, string argVersionId = null)             
         {
-            this.Name = argName;
-            this.ReportData = argReportData;
-            this.Folder = argFolder;
-            this.DestFileName = argDestFileName;
+            this.DestPath = argDestPath;
+            this.SrcPath = argSrcPath;
+            this.SrcStorageName = argSrcStorageName;
+            this.DestStorageName = argDestStorageName;
+            this.VersionId = argVersionId;
         }
 
         /// <summary>
-        /// File name of template, which is located on a storage
+        /// Destination file path e.g. '/dest.ext'
         /// </summary>  
-        public string Name { get; set; }
+        public string DestPath { get; set; }
 
         /// <summary>
-        /// Report Data Options. It should be JSON with SaveFormat and ReportData
+        /// Source file's path e.g. '/Folder 1/file.ext' or '/Bucket/Folder 1/file.ext'
         /// </summary>  
-        public ReportOptionsData ReportData { get; set; }
+        public string SrcPath { get; set; }
 
         /// <summary>
-        /// Folder path where template file is located(on a storage)
+        /// Source storage name
         /// </summary>  
-        public string Folder { get; set; }
+        public string SrcStorageName { get; set; }
 
         /// <summary>
-        /// Result name of built document
+        /// Destination storage name
         /// </summary>  
-        public string DestFileName { get; set; }
+        public string DestStorageName { get; set; }
+
+        /// <summary>
+        /// File version ID to move
+        /// </summary>  
+        public string VersionId { get; set; }
   }
 }
