@@ -24,6 +24,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace GroupDocs.Assembly.Cloud.Sdk.Test.Api
 {
+    using System.Collections.Generic;
     using System.IO;
 
     using GroupDocs.Assembly.Cloud.Sdk.Model;
@@ -46,12 +47,22 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Test.Api
         {
             var fileName = "TestAllChartTypes.docx";
             var dataName = "Teams.json";
-            var data = new MemoryStream(File.ReadAllBytes(Path.Combine(BaseTestContext.LocalTestDataFolder, dataName)));
-            var saveOptions = new LoadSaveOptionsData() { SaveFormat = "pdf" };
-            this.UploadFileToStorage(Path.Combine(BaseTestContext.RemoteBaseTestDataFolder, "GroupDocs.Assembly", fileName), null, null, File.ReadAllBytes(Path.Combine(BaseTestContext.LocalTestDataFolder, fileName)));
+            var data = new MemoryStream();
+            var reportOptionsData = new ReportOptionsData() 
+            {
+                SaveFormat = "pdf",
+                ReportData = File.ReadAllText(Path.Combine(BaseTestContext.LocalTestDataFolder, dataName))
+            };
+            var uploadFileRequest = new UploadFileRequest(
+                File.OpenRead(Path.Combine(BaseTestContext.LocalTestDataFolder, fileName)),
+                Path.Combine(BaseTestContext.RemoteBaseTestDataFolder, "GroupDocs.Assembly", fileName));
+
+            var uploadFileResult = this.AssemblyApi.UploadFile(uploadFileRequest);
+            Assert.IsTrue(uploadFileResult.Errors.Count == 0, "Error occurred while upload document");
+            Assert.IsTrue(uploadFileResult.Uploaded.Count == 1, "Error occurred while upload document");
 
             var request = new PostAssembleDocumentRequest(
-                fileName, data, saveOptions, Path.Combine(BaseTestContext.RemoteBaseTestDataFolder, "GroupDocs.Assembly"), null);
+                fileName, reportOptionsData, Path.Combine(BaseTestContext.RemoteBaseTestDataFolder, "GroupDocs.Assembly"), null);
             var result = this.AssemblyApi.PostAssembleDocument(request);
 
             Assert.IsTrue(result.Length > 0, "Error occurred while assemble document");

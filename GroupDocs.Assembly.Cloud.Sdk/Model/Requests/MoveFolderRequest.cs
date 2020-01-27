@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="PostAssembleDocumentRequest.cs">
+// <copyright company="Aspose" file="MoveFolderRequest.cs">
 //   Copyright (c) 2019 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -28,50 +28,50 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
   using GroupDocs.Assembly.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.PostAssembleDocument" /> operation.
+  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.MoveFolder" /> operation.
   /// </summary>  
-  public class PostAssembleDocumentRequest  
+  public class MoveFolderRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostAssembleDocumentRequest"/> class.
+        /// Initializes a new instance of the <see cref="MoveFolderRequest"/> class.
         /// </summary>        
-        public PostAssembleDocumentRequest()
+        public MoveFolderRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostAssembleDocumentRequest"/> class.
+        /// Initializes a new instance of the <see cref="MoveFolderRequest"/> class.
         /// </summary>
-        /// <param name="argName">File name of template, which is located on a storage</param>
-        /// <param name="argReportData">Report Data Options. It should be JSON with SaveFormat and ReportData</param>
-        /// <param name="argFolder">Folder path where template file is located(on a storage)</param>
-        /// <param name="argDestFileName">Result name of built document</param>
-        public PostAssembleDocumentRequest(string argName, ReportOptionsData argReportData, string argFolder = null, string argDestFileName = null)             
+        /// <param name="argDestPath">Destination folder path to move to e.g &#39;/dst&#39;</param>
+        /// <param name="argSrcPath">Source folder path e.g. /Folder1</param>
+        /// <param name="argSrcStorageName">Source storage name</param>
+        /// <param name="argDestStorageName">Destination storage name</param>
+        public MoveFolderRequest(string argDestPath, string argSrcPath, string argSrcStorageName = null, string argDestStorageName = null)             
         {
-            this.Name = argName;
-            this.ReportData = argReportData;
-            this.Folder = argFolder;
-            this.DestFileName = argDestFileName;
+            this.DestPath = argDestPath;
+            this.SrcPath = argSrcPath;
+            this.SrcStorageName = argSrcStorageName;
+            this.DestStorageName = argDestStorageName;
         }
 
         /// <summary>
-        /// File name of template, which is located on a storage
+        /// Destination folder path to move to e.g '/dst'
         /// </summary>  
-        public string Name { get; set; }
+        public string DestPath { get; set; }
 
         /// <summary>
-        /// Report Data Options. It should be JSON with SaveFormat and ReportData
+        /// Source folder path e.g. /Folder1
         /// </summary>  
-        public ReportOptionsData ReportData { get; set; }
+        public string SrcPath { get; set; }
 
         /// <summary>
-        /// Folder path where template file is located(on a storage)
+        /// Source storage name
         /// </summary>  
-        public string Folder { get; set; }
+        public string SrcStorageName { get; set; }
 
         /// <summary>
-        /// Result name of built document
+        /// Destination storage name
         /// </summary>  
-        public string DestFileName { get; set; }
+        public string DestStorageName { get; set; }
   }
 }

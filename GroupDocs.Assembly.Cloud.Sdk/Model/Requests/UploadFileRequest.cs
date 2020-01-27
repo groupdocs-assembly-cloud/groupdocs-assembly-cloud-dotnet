@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="PostAssembleDocumentRequest.cs">
+// <copyright company="Aspose" file="UploadFileRequest.cs">
 //   Copyright (c) 2019 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -28,50 +28,43 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
   using GroupDocs.Assembly.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.PostAssembleDocument" /> operation.
+  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.UploadFile" /> operation.
   /// </summary>  
-  public class PostAssembleDocumentRequest  
+  public class UploadFileRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostAssembleDocumentRequest"/> class.
+        /// Initializes a new instance of the <see cref="UploadFileRequest"/> class.
         /// </summary>        
-        public PostAssembleDocumentRequest()
+        public UploadFileRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostAssembleDocumentRequest"/> class.
+        /// Initializes a new instance of the <see cref="UploadFileRequest"/> class.
         /// </summary>
-        /// <param name="argName">File name of template, which is located on a storage</param>
-        /// <param name="argReportData">Report Data Options. It should be JSON with SaveFormat and ReportData</param>
-        /// <param name="argFolder">Folder path where template file is located(on a storage)</param>
-        /// <param name="argDestFileName">Result name of built document</param>
-        public PostAssembleDocumentRequest(string argName, ReportOptionsData argReportData, string argFolder = null, string argDestFileName = null)             
+        /// <param name="argFile">File to upload</param>
+        /// <param name="argPath">Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext              If the content is multipart and path does not contains the file name it tries to get them from filename parameter              from Content-Disposition header.</param>
+        /// <param name="argStorageName">Storage name</param>
+        public UploadFileRequest(System.IO.Stream argFile, string argPath, string argStorageName = null)             
         {
-            this.Name = argName;
-            this.ReportData = argReportData;
-            this.Folder = argFolder;
-            this.DestFileName = argDestFileName;
+            this.File = argFile;
+            this.Path = argPath;
+            this.StorageName = argStorageName;
         }
 
         /// <summary>
-        /// File name of template, which is located on a storage
+        /// File to upload
         /// </summary>  
-        public string Name { get; set; }
+        public System.IO.Stream File { get; set; }
 
         /// <summary>
-        /// Report Data Options. It should be JSON with SaveFormat and ReportData
+        /// Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext              If the content is multipart and path does not contains the file name it tries to get them from filename parameter              from Content-Disposition header.
         /// </summary>  
-        public ReportOptionsData ReportData { get; set; }
+        public string Path { get; set; }
 
         /// <summary>
-        /// Folder path where template file is located(on a storage)
+        /// Storage name
         /// </summary>  
-        public string Folder { get; set; }
-
-        /// <summary>
-        /// Result name of built document
-        /// </summary>  
-        public string DestFileName { get; set; }
+        public string StorageName { get; set; }
   }
 }

@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="PostAssembleDocumentRequest.cs">
+// <copyright company="Aspose" file="DownloadFileRequest.cs">
 //   Copyright (c) 2019 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -28,50 +28,43 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
   using GroupDocs.Assembly.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.PostAssembleDocument" /> operation.
+  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.DownloadFile" /> operation.
   /// </summary>  
-  public class PostAssembleDocumentRequest  
+  public class DownloadFileRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostAssembleDocumentRequest"/> class.
+        /// Initializes a new instance of the <see cref="DownloadFileRequest"/> class.
         /// </summary>        
-        public PostAssembleDocumentRequest()
+        public DownloadFileRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostAssembleDocumentRequest"/> class.
+        /// Initializes a new instance of the <see cref="DownloadFileRequest"/> class.
         /// </summary>
-        /// <param name="argName">File name of template, which is located on a storage</param>
-        /// <param name="argReportData">Report Data Options. It should be JSON with SaveFormat and ReportData</param>
-        /// <param name="argFolder">Folder path where template file is located(on a storage)</param>
-        /// <param name="argDestFileName">Result name of built document</param>
-        public PostAssembleDocumentRequest(string argName, ReportOptionsData argReportData, string argFolder = null, string argDestFileName = null)             
+        /// <param name="argPath">Path of the file including the file name and extension e.g. /folder1/file.ext</param>
+        /// <param name="argStorageName">Storage name</param>
+        /// <param name="argVersionId">File version ID to download</param>
+        public DownloadFileRequest(string argPath, string argStorageName = null, string argVersionId = null)             
         {
-            this.Name = argName;
-            this.ReportData = argReportData;
-            this.Folder = argFolder;
-            this.DestFileName = argDestFileName;
+            this.Path = argPath;
+            this.StorageName = argStorageName;
+            this.VersionId = argVersionId;
         }
 
         /// <summary>
-        /// File name of template, which is located on a storage
+        /// Path of the file including the file name and extension e.g. /folder1/file.ext
         /// </summary>  
-        public string Name { get; set; }
+        public string Path { get; set; }
 
         /// <summary>
-        /// Report Data Options. It should be JSON with SaveFormat and ReportData
+        /// Storage name
         /// </summary>  
-        public ReportOptionsData ReportData { get; set; }
+        public string StorageName { get; set; }
 
         /// <summary>
-        /// Folder path where template file is located(on a storage)
+        /// File version ID to download
         /// </summary>  
-        public string Folder { get; set; }
-
-        /// <summary>
-        /// Result name of built document
-        /// </summary>  
-        public string DestFileName { get; set; }
+        public string VersionId { get; set; }
   }
 }
