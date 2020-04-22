@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="Format.cs">
-//   Copyright (c) 2019 GroupDocs.Assembly for Cloud
+//   Copyright (c) 2020 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,12 +39,12 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
   public class Format 
   {                       
         /// <summary>
-        /// File format.
+        /// Gets or sets file format.
         /// </summary>  
         public string FileFormat { get; set; }
 
         /// <summary>
-        /// File extension.
+        /// Gets or sets file extension.
         /// </summary>  
         public string Extension { get; set; }
 

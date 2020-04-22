@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="DownloadFileRequest.cs">
+// <copyright company="Aspose" file="FileFormatsResponse.cs">
 //   Copyright (c) 2020 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -22,49 +22,50 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests 
+
+namespace GroupDocs.Assembly.Cloud.Sdk.Model 
 {
+  using System;  
+  using System.Collections;
   using System.Collections.Generic;
-  using GroupDocs.Assembly.Cloud.Sdk.Model; 
+  using System.Runtime.Serialization;
+  using System.Text;
+  using Newtonsoft.Json;
+  using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.DownloadFile" /> operation.
+  /// Response with file formats.
   /// </summary>  
-  public class DownloadFileRequest  
-  {
+  public class FileFormatsResponse : AssemblyResponse 
+  {                       
         /// <summary>
-        /// Initializes a new instance of the <see cref="DownloadFileRequest"/> class.
-        /// </summary>        
-        public DownloadFileRequest()
-        {
-        }
+        /// Gets or sets file formats.
+        /// </summary>  
+        public FormatCollection FileFormats { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DownloadFileRequest"/> class.
+        /// Gets response status code.
+        /// </summary>  
+        public int? Code { get; set; }
+
+        /// <summary>
+        /// Gets or sets response status.
+        /// </summary>  
+        public string Status { get; set; }
+
+        /// <summary>
+        /// Get the string presentation of the object
         /// </summary>
-        /// <param name="argPath">Path of the file including the file name and extension e.g. /folder1/file.ext</param>
-        /// <param name="argStorageName">Storage name</param>
-        /// <param name="argVersionId">File version ID to download</param>
-        public DownloadFileRequest(string argPath, string argStorageName = null, string argVersionId = null)             
+        /// <returns>String presentation of the object</returns>
+        public override string ToString()  
         {
-            this.Path = argPath;
-            this.StorageName = argStorageName;
-            this.VersionId = argVersionId;
+          var sb = new StringBuilder();
+          sb.Append("class FileFormatsResponse {\n");
+          sb.Append("  FileFormats: ").Append(this.FileFormats).Append("\n");
+          sb.Append("  Code: ").Append(this.Code).Append("\n");
+          sb.Append("  Status: ").Append(this.Status).Append("\n");
+          sb.Append("}\n");
+          return sb.ToString();
         }
-
-        /// <summary>
-        /// Path of the file including the file name and extension e.g. /folder1/file.ext
-        /// </summary>  
-        public string Path { get; set; }
-
-        /// <summary>
-        /// Storage name
-        /// </summary>  
-        public string StorageName { get; set; }
-
-        /// <summary>
-        /// File version ID to download
-        /// </summary>  
-        public string VersionId { get; set; }
-  }
+    }
 }

@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="MoveFolderRequest.cs">
+// <copyright company="Aspose" file="ApiError.cs">
 //   Copyright (c) 2020 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -22,56 +22,62 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests 
+
+namespace GroupDocs.Assembly.Cloud.Sdk.Model 
 {
+  using System;  
+  using System.Collections;
   using System.Collections.Generic;
-  using GroupDocs.Assembly.Cloud.Sdk.Model; 
+  using System.Runtime.Serialization;
+  using System.Text;
+  using Newtonsoft.Json;
+  using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.MoveFolder" /> operation.
+  /// Error class.             
   /// </summary>  
-  public class MoveFolderRequest  
-  {
+  public class ApiError 
+  {                       
         /// <summary>
-        /// Initializes a new instance of the <see cref="MoveFolderRequest"/> class.
-        /// </summary>        
-        public MoveFolderRequest()
-        {
-        }
+        /// Gets or sets api error code.
+        /// </summary>  
+        public string Code { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MoveFolderRequest"/> class.
+        /// Gets or sets error message.
+        /// </summary>  
+        public string Message { get; set; }
+
+        /// <summary>
+        /// Gets or sets error description.
+        /// </summary>  
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets server datetime.
+        /// </summary>  
+        public DateTime? DateTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets inner error.
+        /// </summary>  
+        public ApiError InnerApiError { get; set; }
+
+        /// <summary>
+        /// Get the string presentation of the object
         /// </summary>
-        /// <param name="argDestPath">Destination folder path to move to e.g &#39;/dst&#39;</param>
-        /// <param name="argSrcPath">Source folder path e.g. /Folder1</param>
-        /// <param name="argSrcStorageName">Source storage name</param>
-        /// <param name="argDestStorageName">Destination storage name</param>
-        public MoveFolderRequest(string argDestPath, string argSrcPath, string argSrcStorageName = null, string argDestStorageName = null)             
+        /// <returns>String presentation of the object</returns>
+        public override string ToString()  
         {
-            this.DestPath = argDestPath;
-            this.SrcPath = argSrcPath;
-            this.SrcStorageName = argSrcStorageName;
-            this.DestStorageName = argDestStorageName;
+          var sb = new StringBuilder();
+          sb.Append("class ApiError {\n");
+          sb.Append("  Code: ").Append(this.Code).Append("\n");
+          sb.Append("  Message: ").Append(this.Message).Append("\n");
+          sb.Append("  Description: ").Append(this.Description).Append("\n");
+          sb.Append("  DateTime: ").Append(this.DateTime).Append("\n");
+          sb.Append("  InnerApiError: ").Append(this.InnerApiError).Append("\n");
+          sb.Append("}\n");
+          return sb.ToString();
         }
-
-        /// <summary>
-        /// Destination folder path to move to e.g '/dst'
-        /// </summary>  
-        public string DestPath { get; set; }
-
-        /// <summary>
-        /// Source folder path e.g. /Folder1
-        /// </summary>  
-        public string SrcPath { get; set; }
-
-        /// <summary>
-        /// Source storage name
-        /// </summary>  
-        public string SrcStorageName { get; set; }
-
-        /// <summary>
-        /// Destination storage name
-        /// </summary>  
-        public string DestStorageName { get; set; }
-  }
+    }
 }

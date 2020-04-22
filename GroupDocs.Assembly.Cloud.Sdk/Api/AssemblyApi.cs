@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="AssemblyApi.cs">
-//   Copyright (c) 2019 GroupDocs.Assembly for Cloud
+//   Copyright (c) 2020 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -80,6 +80,28 @@ namespace GroupDocs.Assembly.Cloud.Sdk
             requestHandlers.Add(new AuthWithSignatureRequestHandler(this.configuration));
             this.apiInvoker = new ApiInvoker(requestHandlers);
         }                            
+
+        /// <summary>
+        /// Builds a document using document template and XML or JSON data passed in request. 
+        /// </summary>
+        /// <param name="request">Request. <see cref="AssembleDocumentRequest" /></param>
+        /// <returns><see cref="System.IO.Stream"/></returns>         
+        public System.IO.Stream AssembleDocument(AssembleDocumentRequest request)
+        {
+            // create path and map variables
+            var resourcePath = this.configuration.GetApiRootUrl() + "/assembly/assemble";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var postBody = SerializationHelper.Serialize(request.AssembleOptions); // http body (model) parameter
+                    return this.apiInvoker.InvokeBinaryApi(
+                    resourcePath, 
+                   "POST", 
+                    postBody, 
+                null, 
+                null);
+        }
 
         /// <summary>
         /// Copy file 
@@ -304,8 +326,8 @@ namespace GroupDocs.Assembly.Cloud.Sdk
         /// Retrieves list of supported file formats. 
         /// </summary>
         /// <param name="request">Request. <see cref="GetSupportedFileFormatsRequest" /></param>
-        /// <returns><see cref="FormatCollection"/></returns>         
-        public FormatCollection GetSupportedFileFormats(GetSupportedFileFormatsRequest request)
+        /// <returns><see cref="FileFormatsResponse"/></returns>         
+        public FileFormatsResponse GetSupportedFileFormats(GetSupportedFileFormatsRequest request)
         {
             // create path and map variables
             var resourcePath = this.configuration.GetApiRootUrl() + "/assembly/formats";
@@ -322,7 +344,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk
                 null);
             if (response != null)
             {
-                return (FormatCollection)SerializationHelper.Deserialize(response, typeof(FormatCollection));
+                return (FileFormatsResponse)SerializationHelper.Deserialize(response, typeof(FileFormatsResponse));
             }
                     
             return null;
@@ -387,37 +409,6 @@ namespace GroupDocs.Assembly.Cloud.Sdk
                 resourcePath, 
                "PUT", 
                 null, 
-                null, 
-                null);
-        }
-
-        /// <summary>
-        /// Builds a document using document template and XML or JSON data passed in request 
-        /// </summary>
-        /// <param name="request">Request. <see cref="PostAssembleDocumentRequest" /></param>
-        /// <returns><see cref="System.IO.Stream"/></returns>         
-        public System.IO.Stream PostAssembleDocument(PostAssembleDocumentRequest request)
-        {
-           // verify the required parameter 'name' is set
-            if (request.Name == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PostAssembleDocument");
-            }
-
-            // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/assembly/{name}/build";
-            resourcePath = Regex
-                        .Replace(resourcePath, "\\*", string.Empty)
-                        .Replace("&amp;", "&")
-                        .Replace("/?", "?");
-            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "destFileName", request.DestFileName);
-            var postBody = SerializationHelper.Serialize(request.ReportData); // http body (model) parameter
-                    return this.apiInvoker.InvokeBinaryApi(
-                    resourcePath, 
-                   "POST", 
-                    postBody, 
                 null, 
                 null);
         }

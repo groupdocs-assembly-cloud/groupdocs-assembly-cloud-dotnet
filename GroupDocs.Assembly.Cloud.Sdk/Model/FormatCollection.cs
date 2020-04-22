@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="FormatCollection.cs">
-//   Copyright (c) 2019 GroupDocs.Assembly for Cloud
+//   Copyright (c) 2020 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,7 +39,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
   public class FormatCollection 
   {                       
         /// <summary>
-        /// Supported file formats.
+        /// Gets or sets supported file formats.
         /// </summary>  
         public List<Format> Formats { get; set; }
 
