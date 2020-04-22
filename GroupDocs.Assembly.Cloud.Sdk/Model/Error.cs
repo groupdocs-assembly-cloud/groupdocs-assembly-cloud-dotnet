@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="FileResponse.cs">
+// <copyright company="Aspose" file="Error.cs">
 //   Copyright (c) 2020 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -34,10 +34,30 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// The empty type used as a flag.             
+  /// Error
   /// </summary>  
-  public class FileResponse 
+  public class Error 
   {                       
+        /// <summary>
+        /// Code             
+        /// </summary>  
+        public string Code { get; set; }
+
+        /// <summary>
+        /// Message             
+        /// </summary>  
+        public string Message { get; set; }
+
+        /// <summary>
+        /// Description             
+        /// </summary>  
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Inner Error             
+        /// </summary>  
+        public ErrorDetails InnerError { get; set; }
+
         /// <summary>
         /// Get the string presentation of the object
         /// </summary>
@@ -45,7 +65,11 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
         public override string ToString()  
         {
           var sb = new StringBuilder();
-          sb.Append("class FileResponse {\n");
+          sb.Append("class Error {\n");
+          sb.Append("  Code: ").Append(this.Code).Append("\n");
+          sb.Append("  Message: ").Append(this.Message).Append("\n");
+          sb.Append("  Description: ").Append(this.Description).Append("\n");
+          sb.Append("  InnerError: ").Append(this.InnerError).Append("\n");
           sb.Append("}\n");
           return sb.ToString();
         }

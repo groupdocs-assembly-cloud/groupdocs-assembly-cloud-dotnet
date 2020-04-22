@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="PostAssembleDocumentRequest.cs">
-//   Copyright (c) 2019 GroupDocs.Assembly for Cloud
+// <copyright company="Aspose" file="MoveFolderRequest.cs">
+//   Copyright (c) 2020 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,60 +24,54 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests 
 {
+  using System.Collections.Generic;
   using GroupDocs.Assembly.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.PostAssembleDocument" /> operation.
+  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.MoveFolder" /> operation.
   /// </summary>  
-  public class PostAssembleDocumentRequest  
+  public class MoveFolderRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostAssembleDocumentRequest"/> class.
+        /// Initializes a new instance of the <see cref="MoveFolderRequest"/> class.
         /// </summary>        
-        public PostAssembleDocumentRequest()
+        public MoveFolderRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostAssembleDocumentRequest"/> class.
+        /// Initializes a new instance of the <see cref="MoveFolderRequest"/> class.
         /// </summary>
-        /// <param name="name">File name of template, which is located on a storage</param>
-        /// <param name="data">Report data in JSON or XML format</param>
-        /// <param name="saveOptions">Save options in json format</param>
-        /// <param name="folder">Folder path where template file is located(on a storage)</param>
-        /// <param name="destFileName">Result name of built document</param>
-        public PostAssembleDocumentRequest(string name, System.IO.Stream data, LoadSaveOptionsData saveOptions, string folder = null, string destFileName = null)             
+        /// <param name="argDestPath">Destination folder path to move to e.g &#39;/dst&#39;</param>
+        /// <param name="argSrcPath">Source folder path e.g. /Folder1</param>
+        /// <param name="argSrcStorageName">Source storage name</param>
+        /// <param name="argDestStorageName">Destination storage name</param>
+        public MoveFolderRequest(string argDestPath, string argSrcPath, string argSrcStorageName = null, string argDestStorageName = null)             
         {
-            this.Name = name;
-            this.Data = data;
-            this.SaveOptions = saveOptions;
-            this.Folder = folder;
-            this.DestFileName = destFileName;
+            this.DestPath = argDestPath;
+            this.SrcPath = argSrcPath;
+            this.SrcStorageName = argSrcStorageName;
+            this.DestStorageName = argDestStorageName;
         }
 
         /// <summary>
-        /// File name of template, which is located on a storage
+        /// Destination folder path to move to e.g '/dst'
         /// </summary>  
-        public string Name { get; set; }
+        public string DestPath { get; set; }
 
         /// <summary>
-        /// Report data in JSON or XML format
+        /// Source folder path e.g. /Folder1
         /// </summary>  
-        public System.IO.Stream Data { get; set; }
+        public string SrcPath { get; set; }
 
         /// <summary>
-        /// Save options in json format
+        /// Source storage name
         /// </summary>  
-        public LoadSaveOptionsData SaveOptions { get; set; }
+        public string SrcStorageName { get; set; }
 
         /// <summary>
-        /// Folder path where template file is located(on a storage)
+        /// Destination storage name
         /// </summary>  
-        public string Folder { get; set; }
-
-        /// <summary>
-        /// Result name of built document
-        /// </summary>  
-        public string DestFileName { get; set; }
+        public string DestStorageName { get; set; }
   }
 }

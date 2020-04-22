@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="FileResponse.cs">
+// <copyright company="Aspose" file="DeleteFileRequest.cs">
 //   Copyright (c) 2020 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -22,32 +22,49 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
-namespace GroupDocs.Assembly.Cloud.Sdk.Model 
+namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests 
 {
-  using System;  
-  using System.Collections;
   using System.Collections.Generic;
-  using System.Runtime.Serialization;
-  using System.Text;
-  using Newtonsoft.Json;
-  using Newtonsoft.Json.Converters;
+  using GroupDocs.Assembly.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// The empty type used as a flag.             
+  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.DeleteFile" /> operation.
   /// </summary>  
-  public class FileResponse 
-  {                       
+  public class DeleteFileRequest  
+  {
         /// <summary>
-        /// Get the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()  
+        /// Initializes a new instance of the <see cref="DeleteFileRequest"/> class.
+        /// </summary>        
+        public DeleteFileRequest()
         {
-          var sb = new StringBuilder();
-          sb.Append("class FileResponse {\n");
-          sb.Append("}\n");
-          return sb.ToString();
         }
-    }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DeleteFileRequest"/> class.
+        /// </summary>
+        /// <param name="argPath">Path of the file including file name and extension e.g. /Folder1/file.ext</param>
+        /// <param name="argStorageName">Storage name</param>
+        /// <param name="argVersionId">File version ID to delete</param>
+        public DeleteFileRequest(string argPath, string argStorageName = null, string argVersionId = null)             
+        {
+            this.Path = argPath;
+            this.StorageName = argStorageName;
+            this.VersionId = argVersionId;
+        }
+
+        /// <summary>
+        /// Path of the file including file name and extension e.g. /Folder1/file.ext
+        /// </summary>  
+        public string Path { get; set; }
+
+        /// <summary>
+        /// Storage name
+        /// </summary>  
+        public string StorageName { get; set; }
+
+        /// <summary>
+        /// File version ID to delete
+        /// </summary>  
+        public string VersionId { get; set; }
+  }
 }

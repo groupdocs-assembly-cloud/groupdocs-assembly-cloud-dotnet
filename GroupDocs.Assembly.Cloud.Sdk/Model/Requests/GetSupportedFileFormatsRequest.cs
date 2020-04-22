@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="FileResponse.cs">
+// <copyright company="Aspose" file="GetSupportedFileFormatsRequest.cs">
 //   Copyright (c) 2020 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -22,32 +22,15 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
-namespace GroupDocs.Assembly.Cloud.Sdk.Model 
+namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests 
 {
-  using System;  
-  using System.Collections;
   using System.Collections.Generic;
-  using System.Runtime.Serialization;
-  using System.Text;
-  using Newtonsoft.Json;
-  using Newtonsoft.Json.Converters;
+  using GroupDocs.Assembly.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// The empty type used as a flag.             
+  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.GetSupportedFileFormats" /> operation.
   /// </summary>  
-  public class FileResponse 
-  {                       
-        /// <summary>
-        /// Get the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()  
-        {
-          var sb = new StringBuilder();
-          sb.Append("class FileResponse {\n");
-          sb.Append("}\n");
-          return sb.ToString();
-        }
-    }
+  public class GetSupportedFileFormatsRequest  
+  {
+  }
 }

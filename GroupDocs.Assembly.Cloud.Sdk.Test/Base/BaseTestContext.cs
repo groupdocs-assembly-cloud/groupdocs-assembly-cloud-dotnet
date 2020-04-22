@@ -22,13 +22,12 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
+
 namespace GroupDocs.Assembly.Cloud.Sdk.Test.Base
 {
     using System.IO;
-
     using GroupDocs.Assembly.Cloud.Sdk;
-    using GroupDocs.Storage.Cloud.Sdk.Api;
-    using GroupDocs.Storage.Cloud.Sdk.Model.Requests;
+    using GroupDocs.Assembly.Cloud.Sdk.Model.Requests;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -55,7 +54,6 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Test.Base
 
             var configuration = new Configuration { ApiBaseUrl = this.keys.BaseUrl, AppKey = this.keys.AppKey, AppSid = this.keys.AppSid, DebugMode = true };
             this.AssemblyApi = new AssemblyApi(configuration);
-            this.StorageApi = new StorageApi(new Storage.Cloud.Sdk.Configuration { AppKey = this.AppKey, AppSid = this.AppSid, ApiBaseUrl = this.BaseProductUri, DebugMode = true });
         }
 
         /// <summary>
@@ -79,11 +77,6 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Test.Base
                 return "TestOut";
             }
         }
-
-        /// <summary>
-        /// Storage API
-        /// </summary>
-        protected StorageApi StorageApi { get; set; }
 
         /// <summary>
         /// Words API
@@ -144,8 +137,8 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Test.Base
         {
             using (var ms = new MemoryStream(fileContent))
             {
-                var request = new PutCreateRequest(path, ms);
-                this.StorageApi.PutCreate(request);
+                var request = new UploadFileRequest(ms, path);
+                this.AssemblyApi.UploadFile(request);
             }
         }
 

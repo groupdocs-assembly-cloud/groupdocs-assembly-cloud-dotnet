@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="FileResponse.cs">
+// <copyright company="Aspose" file="FileFormatsResponse.cs">
 //   Copyright (c) 2020 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -34,10 +34,25 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// The empty type used as a flag.             
+  /// Response with file formats.
   /// </summary>  
-  public class FileResponse 
+  public class FileFormatsResponse : AssemblyResponse 
   {                       
+        /// <summary>
+        /// Gets or sets file formats.
+        /// </summary>  
+        public FormatCollection FileFormats { get; set; }
+
+        /// <summary>
+        /// Gets response status code.
+        /// </summary>  
+        public int? Code { get; set; }
+
+        /// <summary>
+        /// Gets or sets response status.
+        /// </summary>  
+        public string Status { get; set; }
+
         /// <summary>
         /// Get the string presentation of the object
         /// </summary>
@@ -45,7 +60,10 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
         public override string ToString()  
         {
           var sb = new StringBuilder();
-          sb.Append("class FileResponse {\n");
+          sb.Append("class FileFormatsResponse {\n");
+          sb.Append("  FileFormats: ").Append(this.FileFormats).Append("\n");
+          sb.Append("  Code: ").Append(this.Code).Append("\n");
+          sb.Append("  Status: ").Append(this.Status).Append("\n");
           sb.Append("}\n");
           return sb.ToString();
         }

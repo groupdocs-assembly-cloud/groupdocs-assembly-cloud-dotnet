@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="FileResponse.cs">
+// <copyright company="Aspose" file="ErrorDetails.cs">
 //   Copyright (c) 2020 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -34,10 +34,20 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// The empty type used as a flag.             
+  /// The error details
   /// </summary>  
-  public class FileResponse 
+  public class ErrorDetails 
   {                       
+        /// <summary>
+        /// The request id
+        /// </summary>  
+        public string RequestId { get; set; }
+
+        /// <summary>
+        /// Date
+        /// </summary>  
+        public DateTime? Date { get; set; }
+
         /// <summary>
         /// Get the string presentation of the object
         /// </summary>
@@ -45,7 +55,9 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
         public override string ToString()  
         {
           var sb = new StringBuilder();
-          sb.Append("class FileResponse {\n");
+          sb.Append("class ErrorDetails {\n");
+          sb.Append("  RequestId: ").Append(this.RequestId).Append("\n");
+          sb.Append("  Date: ").Append(this.Date).Append("\n");
           sb.Append("}\n");
           return sb.ToString();
         }

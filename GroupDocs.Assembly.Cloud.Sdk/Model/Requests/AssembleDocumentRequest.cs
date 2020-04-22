@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="FileResponse.cs">
+// <copyright company="Aspose" file="AssembleDocumentRequest.cs">
 //   Copyright (c) 2020 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -22,32 +22,35 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
-namespace GroupDocs.Assembly.Cloud.Sdk.Model 
+namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests 
 {
-  using System;  
-  using System.Collections;
   using System.Collections.Generic;
-  using System.Runtime.Serialization;
-  using System.Text;
-  using Newtonsoft.Json;
-  using Newtonsoft.Json.Converters;
+  using GroupDocs.Assembly.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// The empty type used as a flag.             
+  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.AssembleDocument" /> operation.
   /// </summary>  
-  public class FileResponse 
-  {                       
+  public class AssembleDocumentRequest  
+  {
         /// <summary>
-        /// Get the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()  
+        /// Initializes a new instance of the <see cref="AssembleDocumentRequest"/> class.
+        /// </summary>        
+        public AssembleDocumentRequest()
         {
-          var sb = new StringBuilder();
-          sb.Append("class FileResponse {\n");
-          sb.Append("}\n");
-          return sb.ToString();
         }
-    }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AssembleDocumentRequest"/> class.
+        /// </summary>
+        /// <param name="argAssembleOptions">Assemble Options. It should be JSON with TemplateName, SaveFormat, ReportData and etc.             </param>
+        public AssembleDocumentRequest(AssembleOptions argAssembleOptions)             
+        {
+            this.AssembleOptions = argAssembleOptions;
+        }
+
+        /// <summary>
+        /// Assemble Options. It should be JSON with TemplateName, SaveFormat, ReportData and etc.             
+        /// </summary>  
+        public AssembleOptions AssembleOptions { get; set; }
+  }
 }

@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="FileResponse.cs">
+// <copyright company="Aspose" file="FilesList.cs">
 //   Copyright (c) 2020 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -34,10 +34,15 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// The empty type used as a flag.             
+  /// Files list
   /// </summary>  
-  public class FileResponse 
+  public class FilesList 
   {                       
+        /// <summary>
+        /// Files and folders contained by folder .
+        /// </summary>  
+        public List<StorageFile> Value { get; set; }
+
         /// <summary>
         /// Get the string presentation of the object
         /// </summary>
@@ -45,7 +50,8 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
         public override string ToString()  
         {
           var sb = new StringBuilder();
-          sb.Append("class FileResponse {\n");
+          sb.Append("class FilesList {\n");
+          sb.Append("  Value: ").Append(this.Value).Append("\n");
           sb.Append("}\n");
           return sb.ToString();
         }

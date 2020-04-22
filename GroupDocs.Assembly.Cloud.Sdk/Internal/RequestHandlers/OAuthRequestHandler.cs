@@ -92,7 +92,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk.RequestHandlers
         private void RequestToken()
         {
             var requestUrl = this.configuration.ApiBaseUrl + "/connect/token";
-            //// var requestUrl = "https://api-qa.aspose.cloud/connect/token";           
+            //// var requestUrl = "https://api-qa.groupdocs.cloud/connect/token";           
 
             var postData = "grant_type=client_credentials";
             postData += "&client_id=" + this.configuration.AppSid;

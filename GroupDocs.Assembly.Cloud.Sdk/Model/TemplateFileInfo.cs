@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="FileResponse.cs">
+// <copyright company="Aspose" file="TemplateFileInfo.cs">
 //   Copyright (c) 2020 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -34,10 +34,30 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// The empty type used as a flag.             
+  /// TemplateFileInfo dto.             
   /// </summary>  
-  public class FileResponse 
+  public class TemplateFileInfo 
   {                       
+        /// <summary>
+        /// Gets or sets path to file.             
+        /// </summary>  
+        public string FilePath { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of storage.             
+        /// </summary>  
+        public string StorageName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of storage.             
+        /// </summary>  
+        public string VersionId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the password.             
+        /// </summary>  
+        public string Password { get; set; }
+
         /// <summary>
         /// Get the string presentation of the object
         /// </summary>
@@ -45,7 +65,11 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
         public override string ToString()  
         {
           var sb = new StringBuilder();
-          sb.Append("class FileResponse {\n");
+          sb.Append("class TemplateFileInfo {\n");
+          sb.Append("  FilePath: ").Append(this.FilePath).Append("\n");
+          sb.Append("  StorageName: ").Append(this.StorageName).Append("\n");
+          sb.Append("  VersionId: ").Append(this.VersionId).Append("\n");
+          sb.Append("  Password: ").Append(this.Password).Append("\n");
           sb.Append("}\n");
           return sb.ToString();
         }

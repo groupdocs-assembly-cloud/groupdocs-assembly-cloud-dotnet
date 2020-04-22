@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="FileResponse.cs">
+// <copyright company="Aspose" file="GetFilesListRequest.cs">
 //   Copyright (c) 2020 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -22,32 +22,42 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
-namespace GroupDocs.Assembly.Cloud.Sdk.Model 
+namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests 
 {
-  using System;  
-  using System.Collections;
   using System.Collections.Generic;
-  using System.Runtime.Serialization;
-  using System.Text;
-  using Newtonsoft.Json;
-  using Newtonsoft.Json.Converters;
+  using GroupDocs.Assembly.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// The empty type used as a flag.             
+  /// Request model for <see cref="GroupDocs.Assembly.Cloud.Sdk.Api.AssemblyApi.GetFilesList" /> operation.
   /// </summary>  
-  public class FileResponse 
-  {                       
+  public class GetFilesListRequest  
+  {
         /// <summary>
-        /// Get the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()  
+        /// Initializes a new instance of the <see cref="GetFilesListRequest"/> class.
+        /// </summary>        
+        public GetFilesListRequest()
         {
-          var sb = new StringBuilder();
-          sb.Append("class FileResponse {\n");
-          sb.Append("}\n");
-          return sb.ToString();
         }
-    }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GetFilesListRequest"/> class.
+        /// </summary>
+        /// <param name="argPath">Folder path e.g. /Folder1</param>
+        /// <param name="argStorageName">Storage name</param>
+        public GetFilesListRequest(string argPath, string argStorageName = null)             
+        {
+            this.Path = argPath;
+            this.StorageName = argStorageName;
+        }
+
+        /// <summary>
+        /// Folder path e.g. /Folder1
+        /// </summary>  
+        public string Path { get; set; }
+
+        /// <summary>
+        /// Storage name
+        /// </summary>  
+        public string StorageName { get; set; }
+  }
 }

@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="FileResponse.cs">
+// <copyright company="Aspose" file="AssembleOptions.cs">
 //   Copyright (c) 2020 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -34,10 +34,30 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// The empty type used as a flag.             
+  /// Assemble options data which is using for specifying assemble options, like template name, save format, report data and etc.
   /// </summary>  
-  public class FileResponse 
+  public class AssembleOptions 
   {                       
+        /// <summary>
+        /// Gets or sets the template name which is located on storage.
+        /// </summary>  
+        public TemplateFileInfo TemplateFileInfo { get; set; }
+
+        /// <summary>
+        /// Gets or sets a save format for assembled document.
+        /// </summary>  
+        public string SaveFormat { get; set; }
+
+        /// <summary>
+        /// Gets or sets a data for report.
+        /// </summary>  
+        public string ReportData { get; set; }
+
+        /// <summary>
+        /// Gets or sets result path of a built document.
+        /// </summary>  
+        public string OutputPath { get; set; }
+
         /// <summary>
         /// Get the string presentation of the object
         /// </summary>
@@ -45,7 +65,11 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
         public override string ToString()  
         {
           var sb = new StringBuilder();
-          sb.Append("class FileResponse {\n");
+          sb.Append("class AssembleOptions {\n");
+          sb.Append("  TemplateFileInfo: ").Append(this.TemplateFileInfo).Append("\n");
+          sb.Append("  SaveFormat: ").Append(this.SaveFormat).Append("\n");
+          sb.Append("  ReportData: ").Append(this.ReportData).Append("\n");
+          sb.Append("  OutputPath: ").Append(this.OutputPath).Append("\n");
           sb.Append("}\n");
           return sb.ToString();
         }

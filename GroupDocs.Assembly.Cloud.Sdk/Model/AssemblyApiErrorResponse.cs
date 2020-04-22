@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="LoadSaveOptionsData.cs">
-//   Copyright (c) 2019 GroupDocs.Assembly for Cloud
+// <copyright company="Aspose" file="AssemblyApiErrorResponse.cs">
+//   Copyright (c) 2020 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -34,14 +34,14 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Save options data which is using for specifying additional save options, like save format and etc.
+  /// Error response for exceptions.             
   /// </summary>  
-  public class LoadSaveOptionsData 
+  public class AssemblyApiErrorResponse : AssemblyResponse 
   {                       
         /// <summary>
-        /// Save format for assembled document
+        /// Gets or sets error.
         /// </summary>  
-        public string SaveFormat { get; set; }
+        public ApiError Error { get; set; }
 
         /// <summary>
         /// Get the string presentation of the object
@@ -50,8 +50,8 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
         public override string ToString()  
         {
           var sb = new StringBuilder();
-          sb.Append("class LoadSaveOptionsData {\n");
-          sb.Append("  SaveFormat: ").Append(this.SaveFormat).Append("\n");
+          sb.Append("class AssemblyApiErrorResponse {\n");
+          sb.Append("  Error: ").Append(this.Error).Append("\n");
           sb.Append("}\n");
           return sb.ToString();
         }

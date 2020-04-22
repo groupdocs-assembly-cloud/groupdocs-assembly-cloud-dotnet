@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="FileResponse.cs">
+// <copyright company="Aspose" file="ApiError.cs">
 //   Copyright (c) 2020 GroupDocs.Assembly for Cloud
 // </copyright>
 // <summary>
@@ -34,10 +34,35 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// The empty type used as a flag.             
+  /// Error class.             
   /// </summary>  
-  public class FileResponse 
+  public class ApiError 
   {                       
+        /// <summary>
+        /// Gets or sets api error code.
+        /// </summary>  
+        public string Code { get; set; }
+
+        /// <summary>
+        /// Gets or sets error message.
+        /// </summary>  
+        public string Message { get; set; }
+
+        /// <summary>
+        /// Gets or sets error description.
+        /// </summary>  
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets server datetime.
+        /// </summary>  
+        public DateTime? DateTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets inner error.
+        /// </summary>  
+        public ApiError InnerApiError { get; set; }
+
         /// <summary>
         /// Get the string presentation of the object
         /// </summary>
@@ -45,7 +70,12 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
         public override string ToString()  
         {
           var sb = new StringBuilder();
-          sb.Append("class FileResponse {\n");
+          sb.Append("class ApiError {\n");
+          sb.Append("  Code: ").Append(this.Code).Append("\n");
+          sb.Append("  Message: ").Append(this.Message).Append("\n");
+          sb.Append("  Description: ").Append(this.Description).Append("\n");
+          sb.Append("  DateTime: ").Append(this.DateTime).Append("\n");
+          sb.Append("  InnerApiError: ").Append(this.InnerApiError).Append("\n");
           sb.Append("}\n");
           return sb.ToString();
         }
