@@ -1,38 +1,26 @@
-<?xml version="1.0"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
-    <metadata>
-        <!-- The identifier that must be unique within the hosting gallery -->
-        <id>$id$</id>
-        <title>Swagger Library</title>
-
-        <!-- The package version number that is used when resolving dependencies -->
-        <version>$version$</version>
-
-        <!-- Authors contain text that appears directly on the gallery -->
-        <authors>$author$</authors>
-
-        <!-- Owners are typically nuget.org identities that allow gallery
-             users to earily find other packages by the same owners.  -->
-        <owners>$author$</owners>
-        <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <developmentDependency>false</developmentDependency>
-
-        <!-- The description can be used in package manager UI. Note that the
-             nuget.org gallery uses information you add in the portal. -->
-        <description>A library generated from a Swagger doc</description>
-
-        <!-- Dependencies are automatically installed when the package is installed -->
-        <dependencies>
-
-            <dependency id="NewtonSoft.Json" version="12.0.2" />
-
-        </dependencies>
-    </metadata>
-    <files>
-
-        <!-- A readme.txt will be displayed when the package is installed -->
-        <file src="..\..\README.md" target="" />
-        <file src="..\..\docs\**\*.*" target="docs" />
-
-    </files>
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>GroupDocs.Assembly-Cloud</id>
+    <version>$version$</version>
+    <authors>Yaroslaw Ekimov</authors>
+    <owners>gropdocscloud</owners>
+    <description>This repository contains GroupDocs.Assembly Cloud SDK for .NET source code. This SDK allows you to work with GroupDocs.Assembly Cloud REST APIs in your .NET applications quickly and easily, with zero initial cost.</description>
+	<releaseNotes>https://github.com/groupdocs-assembly-cloud/groupdocs-assembly-cloud-dotnet/releases/tag/$version$</releaseNotes>
+    <copyright>Copyright ©  Aspose 2002-2019. All Rights Reserved.</copyright>
+    <tags>GroupDocs Assembly Cloud .NET SDK report generation DOCX XLSX DOC XLS PPT PPTX</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework2.0">
+        <dependency id="Newtonsoft.Json" version="10.0.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Newtonsoft.Json" version="10.0.1" exclude="Build,Analyzers" />
+        <dependency id="System.Diagnostics.TraceSource" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Net.Requests" version="4.3.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Web" targetFramework=".NETFramework2.0" />
+    </frameworkAssemblies>
+  </metadata>
 </package>

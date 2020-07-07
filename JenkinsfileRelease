@@ -12,7 +12,7 @@ node('windows2019') {
 
 		gitlabCommitStatus("build") {
 			stage('build'){
-				env.SDK_VERSION = powershell(returnStdout: true, script:'echo ((ConvertFrom-Json -InputObject (New-Object System.Net.WebClient).DownloadString("https://api.aspose.cloud/v4.0/words/swagger/spec")).info.version | Select-String -Pattern "^\\d+\\.\\d+" ).Matches[0].Value').trim()
+				env.SDK_VERSION = powershell(returnStdout: true, script:'echo ((ConvertFrom-Json -InputObject (New-Object System.Net.WebClient).DownloadString("https://api.groupdocs.cloud/v1.0/assembly/swagger/spec")).info.version | Select-String -Pattern "^\\d+\\.\\d+" ).Matches[0].Value').trim()
 				
 				withCredentials([file(credentialsId: 'pfxFile', variable: 'pfxFilePath')]) {
 					powershell "Copy-Item $pfxFilePath -Destination  .\\scripts\\aspose.pfx"
@@ -30,8 +30,8 @@ node('windows2019') {
 			stage('prepare test env') {		
 				bat 'mkdir testResults'
 				bat 'mkdir Settings'
-				withCredentials([usernamePassword(credentialsId: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', passwordVariable: 'AppKey', usernameVariable: 'AppSid')]) {
-					bat "echo {\"AppSid\":\"%AppSid%\",\"AppKey\":\"%AppKey%\" } > Settings\\servercreds.json"
+				withCredentials([usernamePassword(credentialsId: '6179b564-811f-48a9-8b85-875076fadbf5', passwordVariable: 'AppKey', usernameVariable: 'AppSid')]) {
+					bat "echo {\"AppSid\":\"%AppSid%\",\"AppKey\":\"%AppKey%\", \"BaseUrl\":\"https://api-qa.groupdocs.cloud\" } > Settings\\servercreds.json"
 				}
 			}
 		}
@@ -58,7 +58,7 @@ stage('wait for publish confirmation'){
 
 node('windows2019') {
 	try {
-		env.SDK_VERSION = powershell(returnStdout: true, script:'echo ((ConvertFrom-Json -InputObject (New-Object System.Net.WebClient).DownloadString("https://api.aspose.cloud/v4.0/words/swagger/spec")).info.version | Select-String -Pattern "^\\d+\\.\\d+" ).Matches[0].Value').trim()
+		env.SDK_VERSION = powershell(returnStdout: true, script:'echo ((ConvertFrom-Json -InputObject (New-Object System.Net.WebClient).DownloadString("https://api.groupdocs.cloud/v1.0/assembly/swagger/spec")).info.version | Select-String -Pattern "^\\d+\\.\\d+" ).Matches[0].Value').trim()
 		
 		gitlabCommitStatus("publish") {
 			stage('publish') {
