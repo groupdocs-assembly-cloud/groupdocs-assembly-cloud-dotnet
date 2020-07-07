@@ -23,7 +23,9 @@ node('windows2019') {
 				}			
 				
 				powershell 'docker build .\\scripts -f .\\scripts\\build.Dockerfile -t netsdkbuild'
-				powershell 'docker run -v ${PWD}:C:\\Build\\ -e SDK_VERSION=$env:SDK_VERSION netsdkbuild c:\\build\\scripts\\build-release.bat'     
+				powershell 'docker run -v ${PWD}:C:\\Build\\ -e SDK_VERSION=$env:SDK_VERSION --isolation=hyperv netsdkbuild c:\\build\\scripts\\build-release.bat'   
+
+				stash name: "package", included: "packages\\*.nupkg"
 			}
 		}
 		gitlabCommitStatus("prepare test env") {
