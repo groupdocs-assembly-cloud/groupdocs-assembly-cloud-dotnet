@@ -61,9 +61,15 @@ stage('wait for publish confirmation'){
 node('windows2019') {
 	try {
 		env.SDK_VERSION = powershell(returnStdout: true, script:'echo ((ConvertFrom-Json -InputObject (New-Object System.Net.WebClient).DownloadString("https://api.groupdocs.cloud/v1.0/assembly/swagger/spec")).info.version | Select-String -Pattern "^\\d+\\.\\d+" ).Matches[0].Value').trim()
+		gitlabCommitStatus("checkout") {
+			stage('checkout'){
+				checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/assembly-cloud/assembly-net-sdk.git']]])
+			}
+		}
 		
 		gitlabCommitStatus("publish") {
 			stage('publish') {
+				unstash "package"
 				withCredentials([string(credentialsId: '3f5eeecc-f6fe-49b9-a5a5-bf7fe2878fd0', variable: 'token')]) {
 					bat '.nuget\\NuGet.exe push packages\\GroupDocs.Assembly-Cloud.%SDK_VERSION%.0.nupkg -ApiKey %token% -Timeout 610 -Source https://www.nuget.org/api/v2/package'
 				}
