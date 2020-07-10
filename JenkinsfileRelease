@@ -40,7 +40,7 @@ node('windows2019') {
 				try {
 					bat 'docker run -v %CD%:C:\\Build\\ netsdkbuild c:\\build\\scripts\\net-test.bat Test'
 				} finally {
-					//junit '**\\testResults\\Test-results-net452.xml'
+					junit '**\\testResults\\Test-results-net452.xml'
 				}
 			}
 		}
