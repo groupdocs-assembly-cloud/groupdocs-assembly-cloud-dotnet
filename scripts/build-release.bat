@@ -34,7 +34,7 @@ c:\\build\tools\signtool.exe verify /pa c:\Build\GroupDocs.Assembly.Cloud.Sdk\bi
 copy c:\Build\GroupDocs.Assembly.Cloud.Sdk\bin\Release\GroupDocs.Assembly.Cloud.Sdk.dll c:\Build\package\lib\netstandard2.0\ || goto end
 
 :Build nuget package
-cd C:\build
+cd C:\build\GroupDocs.Assembly.Cloud.Sdk
 dir
 copy c:\Build\GroupDocs.Assembly.Cloud.Sdk\GroupDocs.Assembly-Cloud.nuspec c:\Build\package\ || goto end
 copy c:\Build\License c:\Build\package\License || goto end
