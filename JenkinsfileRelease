@@ -65,7 +65,7 @@ node('windows2019') {
 		gitlabCommitStatus("publish") {
 			stage('publish') {
 				withCredentials([string(credentialsId: '3f5eeecc-f6fe-49b9-a5a5-bf7fe2878fd0', variable: 'token')]) {
-					bat '.nuget/NuGet.exe push packages/GroupDocs.Assembly-Cloud.%SDK_VERSION%.0.nupkg -ApiKey %token% -Timeout 610 -Source https://www.nuget.org/api/v2/package'
+					bat '.nuget\\NuGet.exe push packages\\GroupDocs.Assembly-Cloud.%SDK_VERSION%.0.nupkg -ApiKey %token% -Timeout 610 -Source https://www.nuget.org/api/v2/package'
 				}
 			}
 		}
