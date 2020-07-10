@@ -33,14 +33,14 @@ c:\\build\tools\signtool.exe verify /pa c:\Build\GroupDocs.Assembly.Cloud.Sdk\bi
 copy c:\Build\GroupDocs.Assembly.Cloud.Sdk\bin\Release\GroupDocs.Assembly.Cloud.Sdk.dll c:\Build\package\lib\netstandard2.0\ || goto end
 
 :Build nuget package
-copy c:\Build\GroupDocs.Assembly.Cloud.Sdk\Aspose.Words-Cloud.nuspec c:\Build\package\ || goto end
+copy c:\Build\GroupDocs.Assembly.Cloud.Sdk\GroupDocs.Assembly-Cloud.nuspec c:\Build\package\ || goto end
 copy c:\Build\License c:\Build\package\License || goto end
-"c:\Build\.nuget\NuGet.exe" pack c:\Build\package\Aspose.Words-Cloud.nuspec -OutputDirectory c:\Build\packages  -properties version=%SDK_VERSION% || goto end
+"c:\Build\.nuget\NuGet.exe" pack c:\Build\package\GroupDocs.Assembly-Cloud.nuspec -OutputDirectory c:\Build\packages  -properties version=%SDK_VERSION% || goto end
 
 :Replace the nuget package with a new version
-c:\Build\.nuget\NuGet.exe add c:\Build\packages\Aspose.Words-Cloud.%SDK_VERSION%.0.nupkg -Source c:\Build\packages || goto end
+c:\Build\.nuget\NuGet.exe add c:\Build\packages\GroupDocs.Assembly-Cloud.%SDK_VERSION%.0.nupkg -Source c:\Build\packages || goto end
 dotnet remove c:\Build\GroupDocs.Assembly.Cloud.Sdk.Test\GroupDocs.Assembly.Cloud.Sdk.Test.csproj reference ..\GroupDocs.Assembly.Cloud.Sdk\GroupDocs.Assembly.Cloud.Sdk.csproj || goto end
-dotnet add c:\Build\GroupDocs.Assembly.Cloud.Sdk.Test\GroupDocs.Assembly.Cloud.Sdk.Test.csproj package Aspose.Words-Cloud -s c:\Build\packages -v %SDK_VERSION%.0 || goto end
+dotnet add c:\Build\GroupDocs.Assembly.Cloud.Sdk.Test\GroupDocs.Assembly.Cloud.Sdk.Test.csproj package GroupDocs.Assembly-Cloud -s c:\Build\packages -v %SDK_VERSION%.0 || goto end
 
 :Build tests
 c:\build\.nuget\NuGet.exe restore c:\build\GroupDocs.Assembly.Cloud.Sdk.sln || goto end
