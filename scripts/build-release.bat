@@ -1,5 +1,6 @@
 :Create folder structure
 if exist c:\Build\package rmdir c:\Build\package /S /Q
+mkdir c:\Build\package || goto end
 mkdir c:\Build\package\lib\net20 || goto end
 mkdir c:\Build\package\lib\netstandard2.0 || goto end
 mkdir c:\Build\package\License || goto end
