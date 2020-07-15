@@ -32,7 +32,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk
     /// </summary>
     public class Configuration
     {
-        private string apiBaseUrl = "https://api.aspose.cloud";       
+        private string apiBaseUrl = "https://api.groupdocs.cloud";       
         private bool debugMode = false;
         
         /// <summary>
