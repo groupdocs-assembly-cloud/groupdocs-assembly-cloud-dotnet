@@ -36,8 +36,8 @@ namespace GroupDocs.Assembly.Cloud.Sdk
 
     internal class ApiInvoker
     {        
-        private const string AsposeClientHeaderName = "x-aspose-client";
-        private const string AsposeClientVersionHeaderName = "x-aspose-client-version";
+        private const string AsposeClientHeaderName = "x-groupdocs-client";
+        private const string AsposeClientVersionHeaderName = "x-groupdocs-client-version";
         private readonly Dictionary<string, string> defaultHeaderMap = new Dictionary<string, string>();
         private readonly List<IRequestHandler> requestHandlers; 
     

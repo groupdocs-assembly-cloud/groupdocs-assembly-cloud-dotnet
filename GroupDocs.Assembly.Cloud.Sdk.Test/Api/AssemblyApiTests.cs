@@ -22,6 +22,7 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
+
 namespace GroupDocs.Assembly.Cloud.Sdk.Test.Api
 {
     using System.IO;
@@ -54,6 +55,28 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Test.Api
             var result = this.AssemblyApi.AssembleDocument(request);
 
             Assert.IsTrue(result.Length > 0, "Error occurred while assemble document");
+        }
+
+        /// <summary>
+        /// Assemble document test
+        /// </summary>
+        [Test]
+        public void TestPostAssembleDocumentThrows()
+        {
+            var fileName = "TableFeatures.odt";
+            var saveOptions = new AssembleOptions() { SaveFormat = "pdf", ReportData = string.Empty, TemplateFileInfo = new TemplateFileInfo { FilePath = Path.Combine(BaseTestContext.RemoteBaseTestDataFolder, "GroupDocs.Assembly", fileName) } };
+            this.UploadFileToStorage(Path.Combine(BaseTestContext.RemoteBaseTestDataFolder, "GroupDocs.Assembly", fileName), null, null, File.ReadAllBytes(Path.Combine(BaseTestContext.LocalTestDataFolder, fileName)));
+
+            var request = new AssembleDocumentRequest(saveOptions);
+            try
+            {
+                this.AssemblyApi.AssembleDocument(request);
+            }
+            catch (ApiException e)
+            {
+                Assert.AreEqual(400, e.ErrorCode);
+                Assert.AreEqual("assembleOptions.ReportData is required in the request body.", e.Message);
+            }
         }
     }
 }

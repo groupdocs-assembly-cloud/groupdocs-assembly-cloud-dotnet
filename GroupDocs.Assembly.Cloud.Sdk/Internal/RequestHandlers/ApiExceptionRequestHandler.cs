@@ -27,7 +27,8 @@ namespace GroupDocs.Assembly.Cloud.Sdk.RequestHandlers
 {
     using System;
     using System.IO;
-    using System.Net;                        
+    using System.Net;
+    using GroupDocs.Assembly.Cloud.Sdk.Model;
 
     internal class ApiExceptionRequestHandler : IRequestHandler
     {
@@ -57,9 +58,13 @@ namespace GroupDocs.Assembly.Cloud.Sdk.RequestHandlers
                 using (var responseReader = new StreamReader(resultStream))
                 {                    
                     var responseData = responseReader.ReadToEnd();
-                    var errorResponse = (ApiException)SerializationHelper.Deserialize(responseData, typeof(ApiException));
+                    var errorResponse = (AssemblyApiErrorResponse)SerializationHelper.Deserialize(responseData, typeof(AssemblyApiErrorResponse));
+                    if (string.IsNullOrEmpty(errorResponse.Error.Message))
+                    {
+                        errorResponse.Error.Message = responseData;
+                    }
 
-                    resutException = new ApiException((int)webResponse.StatusCode, errorResponse.Message);
+                    resutException = new ApiException((int)webResponse.StatusCode, errorResponse.Error.Message);
                 }
             }          
             catch (Exception)
