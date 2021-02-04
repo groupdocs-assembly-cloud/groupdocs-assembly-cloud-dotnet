@@ -42,14 +42,14 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="AssembleDocumentRequest"/> class.
         /// </summary>
-        /// <param name="argAssembleOptions">Assemble Options. It should be JSON with TemplateName, SaveFormat, ReportData and etc.             </param>
+        /// <param name="argAssembleOptions">Assemble Options. It should be JSON or XML with TemplateFileInfo, SaveFormat, ReportData and etc.             </param>
         public AssembleDocumentRequest(AssembleOptions argAssembleOptions)             
         {
             this.AssembleOptions = argAssembleOptions;
         }
 
         /// <summary>
-        /// Assemble Options. It should be JSON with TemplateName, SaveFormat, ReportData and etc.             
+        /// Assemble Options. It should be JSON or XML with TemplateFileInfo, SaveFormat, ReportData and etc.             
         /// </summary>  
         public AssembleOptions AssembleOptions { get; set; }
   }

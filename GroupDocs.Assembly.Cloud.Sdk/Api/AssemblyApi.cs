@@ -420,10 +420,10 @@ namespace GroupDocs.Assembly.Cloud.Sdk
         /// <returns><see cref="FilesUploadResult"/></returns>         
         public FilesUploadResult UploadFile(UploadFileRequest request)
         {
-           // verify the required parameter '_file' is set
-            if (request.File == null) 
+           // verify the required parameter 'fileContent' is set
+            if (request.FileContent == null) 
             {
-                throw new ApiException(400, "Missing required parameter '_file' when calling UploadFile");
+                throw new ApiException(400, "Missing required parameter 'fileContent' when calling UploadFile");
             }
 
            // verify the required parameter 'path' is set
@@ -442,9 +442,9 @@ namespace GroupDocs.Assembly.Cloud.Sdk
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "path", request.Path);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storageName", request.StorageName);
             
-            if (request.File != null) 
+            if (request.FileContent != null) 
             {
-                formParams.Add("_file", this.apiInvoker.ToFileInfo(request.File, "File"));
+                formParams.Add("fileContent", this.apiInvoker.ToFileInfo(request.FileContent, "FileContent"));
             }
             
             var response = this.apiInvoker.InvokeApi(

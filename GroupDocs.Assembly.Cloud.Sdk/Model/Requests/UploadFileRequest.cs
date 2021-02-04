@@ -42,12 +42,12 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="UploadFileRequest"/> class.
         /// </summary>
-        /// <param name="argFile">File to upload</param>
+        /// <param name="argFileContent">File to upload</param>
         /// <param name="argPath">Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext              If the content is multipart and path does not contains the file name it tries to get them from filename parameter              from Content-Disposition header.</param>
         /// <param name="argStorageName">Storage name</param>
-        public UploadFileRequest(System.IO.Stream argFile, string argPath, string argStorageName = null)             
+        public UploadFileRequest(System.IO.Stream argFileContent, string argPath, string argStorageName = null)             
         {
-            this.File = argFile;
+            this.FileContent = argFileContent;
             this.Path = argPath;
             this.StorageName = argStorageName;
         }
@@ -55,7 +55,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model.Requests
         /// <summary>
         /// File to upload
         /// </summary>  
-        public System.IO.Stream File { get; set; }
+        public System.IO.Stream FileContent { get; set; }
 
         /// <summary>
         /// Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext              If the content is multipart and path does not contains the file name it tries to get them from filename parameter              from Content-Disposition header.

@@ -61,7 +61,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
         /// <summary>
         /// Gets or sets inner error.
         /// </summary>  
-        public ApiError InnerApiError { get; set; }
+        public ApiError InnerError { get; set; }
 
         /// <summary>
         /// Get the string presentation of the object
@@ -75,7 +75,7 @@ namespace GroupDocs.Assembly.Cloud.Sdk.Model
           sb.Append("  Message: ").Append(this.Message).Append("\n");
           sb.Append("  Description: ").Append(this.Description).Append("\n");
           sb.Append("  DateTime: ").Append(this.DateTime).Append("\n");
-          sb.Append("  InnerApiError: ").Append(this.InnerApiError).Append("\n");
+          sb.Append("  InnerError: ").Append(this.InnerError).Append("\n");
           sb.Append("}\n");
           return sb.ToString();
         }
