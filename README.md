@@ -3,12 +3,15 @@ This repository contains GroupDocs.Assembly Cloud SDK for .NET source code. This
 
 See [API Reference](https://apireference.groupdocs.cloud/) for full API specification.
 
+# Key Features
+* API to Define Templates, Fetch Data Source, Insert Data in Template & Generate on the fly Reports.
+
 ## How to use the SDK?
 The complete source code is available in this repository folder. You can either directly use it in your project via source code or get [NuGet distribution](https://www.nuget.org/packages/GroupDocs.Assembly-Cloud/) (recommended).
 
 ### Prerequisites
 
-To use GroupDocs.Assembly for Cloud .NET SDK you need to register an account with [GroupDocs Cloud](https://www.groupdocs.cloud/) and lookup/create App Key and SID at [Cloud Dashboard](https://dashboard.groupdocs.cloud/#/apps). There is free quota available. For more details, see [GroupDocs Cloud Pricing](https://purchase.groupdocs.cloud/pricing).
+To use GroupDocs.Assembly for Cloud .NET SDK you need to register an account with [GroupDocs Cloud](https://www.groupdocs.cloud/) and lookup/create App Key and SID at [Cloud Dashboard](https://dashboard.groupdocs.cloud/applications). There is free quota available. For more details, see [GroupDocs Cloud Pricing](https://purchase.groupdocs.cloud/pricing).
 
 ### Installation
 
@@ -43,14 +46,13 @@ Before run tests please fill file [servercreds.json](Settings/servercreds.json) 
 
 The examples below show how your application have to assemble document using GroupDocs.Assembly-Cloud library:
 ```csharp
-var assemblyApi = new AssemblyApi(AppKey, AppSid);
-var dataName = "FileWithData.json";
-var data = new MemoryStream(File.ReadAllBytes(Path.Combine(LocalTestDataFolder, dataName)));
-var saveOptions = new LoadSaveOptionsData("pdf");
-var request = new PostAssembleDocumentRequest(
-                fileName,
-                Path.Combine("Path/To/Document/On/Storage"), null, data, saveOptions);            
-var documentStream = this.AssemblyApi.PostAssembleDocument(request);
+var fileName = "Template.docx";
+var dataName = "JsonData.json";
+var data = File.ReadAllText(Path.Combine(pathToData));
+var saveOptions = new AssembleOptions() { SaveFormat = "pdf", ReportData = data, TemplateFileInfo = new TemplateFileInfo { FilePath = pathToFile } };
+
+var request = new AssembleDocumentRequest(saveOptions);
+var result = this.AssemblyApi.AssembleDocument(request);
 ```
 
 [Tests](GroupDocs.Assembly.Cloud.Sdk.Test) contain examples of using the SDK.
@@ -58,3 +60,6 @@ var documentStream = this.AssemblyApi.PostAssembleDocument(request);
 ## Dependencies
 - .NET Framework 2.0 or later
 - [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/)
+
+## Contact Us
+[Product Page](https://products.groupdocs.cloud/assembly/net) | [Documentation](https://docs.groupdocs.cloud/display/assemblycloud/Home) | [API Reference](https://apireference.groupdocs.cloud/assembly/) | [Code Samples](https://github.com/groupdocs-assembly-cloud/groupdocs-assembly-cloud-net) | [Blog](https://blog.groupdocs.cloud/category/assembly/) | [Free Support](https://forum.groupdocs.cloud/c/assembly) | [Free Trial](https://dashboard.groupdocs.cloud/applications)
